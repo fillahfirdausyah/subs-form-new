@@ -1,0 +1,16 @@
+.login-page {
+  margin-top: 50px;
+}
+
+.login-form {
+  border-radius: 15px;
+  background-color: #16365C;
+  color: white;
+  box-shadow: 2px 4px 13px -5px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 4px 13px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 4px 13px -5px rgba(0, 0, 0, 0.75);
+}
+
+.login-with {
+  margin-top: 20px;
+}

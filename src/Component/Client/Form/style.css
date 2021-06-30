@@ -1,0 +1,17 @@
+.form-main {
+  margin: 0 auto;
+}
+
+.btn-proses {
+  position: fixed !important;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50px !important;
+  background-color: #243549 !important;
+  /* text-align: center; */
+  /* vertical-align: middle; */
+  /* padding: 10px 10px 10px 10px; */
+  bottom: 40px;
+  right: 200px;
+  color: white !important;
+}

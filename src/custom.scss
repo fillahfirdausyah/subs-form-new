@@ -1,0 +1,18 @@
+// $primary: #156b9e;
+$font-family-sans-serif: "Poppins";
+body {
+  background-color: #151d26 !important;
+  color: white !important;
+}
+
+.card {
+  background-color: #16365c !important;
+  color: white;
+}
+
+.card-dashboard p li {
+  font-weight: 600px !important;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+@import "~bootstrap/scss/bootstrap.scss";
