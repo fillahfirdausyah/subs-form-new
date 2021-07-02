@@ -15,3 +15,8 @@
   right: 200px;
   color: white !important;
 }
+
+button.btn-collapsed {
+  outline: none !important;
+  box-shadow: none !important;
+}
