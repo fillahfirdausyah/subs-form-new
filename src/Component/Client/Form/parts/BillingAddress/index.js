@@ -5,6 +5,7 @@ import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
 function BillingAddres({getBillingAddress}) { 
+  const [open, setOpen] = useState(false);
   const [data, setData] = useState({});
 
   const changeHandler = (e) => {

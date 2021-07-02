@@ -4,21 +4,22 @@ import React, { useState } from "react";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
-function SubscriptionFee({ getSubscriptionFee }) { 
+function SubscriptionFee({ getSubscriptionFee }) {
+  const [open, setOpen] = useState(false);
   const [data, setData] = useState({
     biayaSetUp: "",
     biayaLayanan: "",
   });
 
   const changeHandler = (e) => {
-    const {name, value} = e.target
+    const { name, value } = e.target;
 
     const newData = {
       ...data,
-      [name]: value
-    }
-    setData(newData)
-    getSubscriptionFee(newData)
+      [name]: value,
+    };
+    setData(newData);
+    getSubscriptionFee(newData);
   };
 
   return (

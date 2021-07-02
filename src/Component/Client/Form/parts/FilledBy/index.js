@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 
 // Icon
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
 function Filledby(props) {
-  console.log(props.currentUser.displayName) 
+  const [open, setOpen] = useState(false);
+  console.log(props.currentUser.displayName);
   return (
     <>
       <div class="card text-white bg-dark-custom mb-3 card-custom">

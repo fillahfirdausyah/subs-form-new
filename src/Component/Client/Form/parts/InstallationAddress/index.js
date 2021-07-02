@@ -1,23 +1,22 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 // Icon
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
-function InstallationAddres({getInstallationAddress}) {
-
-  const [data, setData] = useState({}) 
+function InstallationAddres({ getInstallationAddress }) {
+  const [open, setOpen] = useState(false);
+  const [data, setData] = useState({});
 
   const changeHandler = (e) => {
-
-    const {name, value} = e.target
+    const { name, value } = e.target;
 
     const newData = {
-      [name]: value
-    }
-    setData(newData)
-    getInstallationAddress(newData)
-  }
+      [name]: value,
+    };
+    setData(newData);
+    getInstallationAddress(newData);
+  };
 
   return (
     <>
@@ -26,7 +25,7 @@ function InstallationAddres({getInstallationAddress}) {
         <div className="card-body">
           <div class="mb-3">
             <textarea
-            onChange={changeHandler}
+              onChange={changeHandler}
               class="form-control"
               id="alamat"
               rows="3"

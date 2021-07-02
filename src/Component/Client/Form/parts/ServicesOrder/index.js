@@ -7,7 +7,8 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 // Component
 import Radio from "../../../../Radio";
 
-function ServiceOrder({ getServiceOrder }) { 
+function ServiceOrder({ getServiceOrder }) {
+  const [open, setOpen] = useState(false);
   const [data, setData] = useState({
     spesifikasiLayanan: "",
     informasiTambahan: "",
@@ -41,14 +42,14 @@ function ServiceOrder({ getServiceOrder }) {
   ];
 
   const changeHandler = (e) => {
-    const {name, value} = e.target
+    const { name, value } = e.target;
 
     const newData = {
       ...data,
-      [name]: value
-    }
-    setData(newData)
-    getServiceOrder(newData)
+      [name]: value,
+    };
+    setData(newData);
+    getServiceOrder(newData);
   };
 
   return (

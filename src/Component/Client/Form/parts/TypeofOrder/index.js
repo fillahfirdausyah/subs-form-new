@@ -8,6 +8,7 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import Radio from "../../../../Radio";
 
 function TypeofOrder({ getTypeofOrder }) {
+  const [open, setOpen] = useState(false);
   const [other, setOther] = useState("");
 
   const xkl = [

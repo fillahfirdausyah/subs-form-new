@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
-function Signs({ getPtClient }) { 
+function Signs({ getPtClient }) {
+  const [open, setOpen] = useState(false);
   //   const [nama, setNama] = useState('')
   //   const [file, setFile] = useState('')
   const [data, setData] = useState({
@@ -26,12 +27,12 @@ function Signs({ getPtClient }) {
 
   const fileHandler = (e) => {
     const newData = {
-        ...data,
-        [e.target.name]: e.target.files[0]
-    }
+      ...data,
+      [e.target.name]: e.target.files[0],
+    };
 
-    setData(newData)
-    getPtClient(newData)
+    setData(newData);
+    getPtClient(newData);
   };
 
   return (
