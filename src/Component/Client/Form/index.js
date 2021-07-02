@@ -30,7 +30,6 @@ function Form(props) {
 
   const getInformation = (data) => {
     setInformation(data);
-    console.log(data);
   };
 
   const getTypeofOrder = (data) => {

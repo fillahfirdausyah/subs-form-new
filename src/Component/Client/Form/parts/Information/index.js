@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { database } from "../../../../../firebase";
+import { Collapse, Container } from "react-bootstrap";
+
+// Icon
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+
+// Component
+import FormWrapper from "../FormWrapper";
 
 function Information({ getInformation }) {
   let [no, setNo] = useState(0);
-  const [data, setData] = useState({});
+  const [open, setOpen] = useState(false);
 
   let ts = Date.now();
   let date_ob = new Date(ts);
-  let date = date_ob.getDate();
   let month = date_ob.getMonth() + 1;
   let year = date_ob.getFullYear();
   let currentDate = date_ob.toISOString().substring(0, 10);
@@ -45,67 +53,79 @@ function Information({ getInformation }) {
   const fpb = `/FPB/205/${convertRoman(month)}/${year}`;
 
   const hasil = `${info1}00${no + 1}${fpb}`;
-  
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "https://subsform-buana-default-rtdb.asia-southeast1.firebasedatabase.app/data.json"
-  //     )
-  //     .then((x) => {
-  //       setNo(Object.values(x.data).length);
-  //     });
 
-  //   const newData = {
-  //     tggl: currentDate,
-  //     fpb: hasil,
-  //     cid: info1,
-  //   };
+  useEffect(() => {
+    database.ref("data").on("value", (snap) => {
+      let total = 0;
+      snap.forEach((x) => {
+        total += x.numChildren();
+      });
+      setNo(total);
+    });
 
-  //   getInformation(newData);
-  // }, []);
+    const newData = {
+      tggl: currentDate,
+      fpb: hasil,
+      cid: info1,
+    };
+
+    getInformation(newData);
+  }, []);
 
   return (
     <>
       <div class="card text-white bg-dark-custom mb-3 card-custom">
-        <div class="card-header">Informasi</div>
-        <div class="card-body">
-          <div class="mb-3">
-            <label for="date" class="form-label">
-              Tanggal
-            </label>
-            <input
-              type="date"
-              class="form-control"
-              id="date"
-              value={currentDate}
-              disabled
-            />
-          </div>
-          <div class="mb-3">
-            <label for="no-fpb" class="form-label">
-              No. FPB
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="no-fpb"
-              value={hasil}
-              disabled
-            />
-          </div>
-          <div class="mb-3">
-            <label for="no-cid" class="form-label">
-              No. CID
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="no-cid"
-              value={info1}
-              disabled
-            />
-          </div>
+        <div class="card-header d-flex align-items-center justify-content-between">
+          Informasi
+          <button
+            type="button"
+            className="btn btn-sm btn-primary btn-collapsed"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+          >
+            {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
+          </button>
         </div>
+        <FormWrapper in={open}>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="date" class="form-label">
+                Tanggal
+              </label>
+              <input
+                type="date"
+                class="form-control"
+                id="date"
+                value={currentDate}
+                disabled
+              />
+            </div>
+            <div class="mb-3">
+              <label for="no-fpb" class="form-label">
+                No. FPB
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="no-fpb"
+                value={hasil}
+                disabled
+              />
+            </div>
+            <div class="mb-3">
+              <label for="no-cid" class="form-label">
+                No. CID
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="no-cid"
+                value={info1}
+                disabled
+              />
+            </div>
+          </div>
+        </FormWrapper>
       </div>
     </>
   );
