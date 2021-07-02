@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { database } from "../../../../../firebase";
-import { Collapse, Container } from "react-bootstrap";
 
 // Icon
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";

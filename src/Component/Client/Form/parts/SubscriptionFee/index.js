@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-function SubscriptionFee({ getSubscriptionFee }) {
+// Icon
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+
+function SubscriptionFee({ getSubscriptionFee }) { 
   const [data, setData] = useState({
     biayaSetUp: "",
     biayaLayanan: "",

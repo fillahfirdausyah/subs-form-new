@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-function Signs({ getPtClient }) {
+// Icon
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+
+function Signs({ getPtClient }) { 
   //   const [nama, setNama] = useState('')
   //   const [file, setFile] = useState('')
   const [data, setData] = useState({

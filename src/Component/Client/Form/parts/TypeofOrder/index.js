@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+
+// Icon
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+
+// Component
 import Radio from "../../../../Radio";
 
 function TypeofOrder({ getTypeofOrder }) {
@@ -38,9 +44,9 @@ function TypeofOrder({ getTypeofOrder }) {
   };
 
   const radioHandler = (e) => {
-    const {value, checked} = e.target
-    getTypeofOrder({[value]: checked})
-  }
+    const { value, checked } = e.target;
+    getTypeofOrder({ [value]: checked });
+  };
 
   return (
     <>
@@ -51,9 +57,16 @@ function TypeofOrder({ getTypeofOrder }) {
             <tr>
               <td>Jenis Permintaan / Type of Order</td>
               <td>
-                {xkl.map(x => 
-                  <Radio name={x.name} key={x.id} id={x.id} label={x.label} value={x.val} onChange={radioHandler}/>
-                )}
+                {xkl.map((x) => (
+                  <Radio
+                    name={x.name}
+                    key={x.id}
+                    id={x.id}
+                    label={x.label}
+                    value={x.val}
+                    onChange={radioHandler}
+                  />
+                ))}
               </td>
             </tr>
           </table>

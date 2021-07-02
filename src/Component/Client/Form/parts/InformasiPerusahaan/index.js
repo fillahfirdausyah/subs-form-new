@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+// Icon
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+
 function InformasiPerusahaan({ getInfoPerushaan }) {
   const [data, setData] = useState({
     namaPerusahaan: "",

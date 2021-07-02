@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-function AuthorizedFinance({ getAuthorizedFinance }) {
+// Icon
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+
+function AuthorizedFinance({ getAuthorizedFinance }) { 
   const [data, setaData] = useState({
     nama: "",
     bagian: "",
