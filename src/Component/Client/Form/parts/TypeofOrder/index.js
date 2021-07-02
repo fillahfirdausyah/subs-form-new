@@ -6,6 +6,7 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
 // Component
 import Radio from "../../../../Radio";
+import FormWrapper from "../FormWrapper";
 
 function TypeofOrder({ getTypeofOrder }) {
   const [open, setOpen] = useState(false);
@@ -63,25 +64,27 @@ function TypeofOrder({ getTypeofOrder }) {
             {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
           </button>
         </div>
-        <div class="card-body">
-          <table className="main-page">
-            <tr>
-              <td>Jenis Permintaan / Type of Order</td>
-              <td>
-                {xkl.map((x) => (
-                  <Radio
-                    name={x.name}
-                    key={x.id}
-                    id={x.id}
-                    label={x.label}
-                    value={x.val}
-                    onChange={radioHandler}
-                  />
-                ))}
-              </td>
-            </tr>
-          </table>
-        </div>
+        <FormWrapper in={open}>
+          <div class="card-body">
+            <table className="main-page">
+              <tr>
+                <td>Jenis Permintaan / Type of Order</td>
+                <td>
+                  {xkl.map((x) => (
+                    <Radio
+                      name={x.name}
+                      key={x.id}
+                      id={x.id}
+                      label={x.label}
+                      value={x.val}
+                      onChange={radioHandler}
+                    />
+                  ))}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </FormWrapper>
       </div>
     </>
   );

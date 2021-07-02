@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
+// Component
+import FormWrapper from "../FormWrapper";
+
 function AuthorizedFinance({ getAuthorizedFinance }) {
   const [open, setOpen] = useState(false);
   const [data, setaData] = useState({
