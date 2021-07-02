@@ -35,18 +35,20 @@ function InstallationAddres({ getInstallationAddress }) {
             {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
           </button>
         </div>
-        <div className="card-body">
-          <div class="mb-3">
-            <textarea
-              onChange={changeHandler}
-              class="form-control"
-              id="alamat"
-              rows="3"
-              name="installationAddress"
-              value={data.alamat}
-            ></textarea>
+        <FormWrapper in={open}>
+          <div className="card-body">
+            <div class="mb-3">
+              <textarea
+                onChange={changeHandler}
+                class="form-control"
+                id="alamat"
+                rows="3"
+                name="installationAddress"
+                value={data.alamat}
+              ></textarea>
+            </div>
           </div>
-        </div>
+        </FormWrapper>
       </div>
     </>
   );

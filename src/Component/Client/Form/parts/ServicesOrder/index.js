@@ -67,51 +67,53 @@ function ServiceOrder({ getServiceOrder }) {
             {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
           </button>
         </div>
-        <div className="card-body">
-          <div class="mb-3">
-            <label for="jenis-usaha" class="form-label">
-              Jenis Layanan
-            </label>
-            <div className="row">
-              {radioData.map((x) => (
-                <div className="col">
-                  <Radio
-                    name={x.name}
-                    value={x.val}
-                    label={x.label}
-                    onChange={changeHandler}
-                  />
-                </div>
-              ))}
+        <FormWrapper in={open}>
+          <div className="card-body">
+            <div class="mb-3">
+              <label for="jenis-usaha" class="form-label">
+                Jenis Layanan
+              </label>
+              <div className="row">
+                {radioData.map((x) => (
+                  <div className="col">
+                    <Radio
+                      name={x.name}
+                      value={x.val}
+                      label={x.label}
+                      onChange={changeHandler}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="nama-perusahaan" class="form-label">
+                Spesifikasi Layanan
+              </label>
+              <input
+                onChange={changeHandler}
+                type="text"
+                class="form-control"
+                id="nama-perusahaan"
+                name="spesifikasiLayanan"
+                value={data.spesifikasiLayanan}
+              />
+            </div>
+            <div class="mb-3">
+              <label for="nama-perusahaan" class="form-label">
+                Informasi Tambahan
+              </label>
+              <input
+                onChange={changeHandler}
+                type="text"
+                class="form-control"
+                id="nama-perusahaan"
+                name="informasiTambahan"
+                value={data.informasiTambahan}
+              />
             </div>
           </div>
-          <div class="mb-3">
-            <label for="nama-perusahaan" class="form-label">
-              Spesifikasi Layanan
-            </label>
-            <input
-              onChange={changeHandler}
-              type="text"
-              class="form-control"
-              id="nama-perusahaan"
-              name="spesifikasiLayanan"
-              value={data.spesifikasiLayanan}
-            />
-          </div>
-          <div class="mb-3">
-            <label for="nama-perusahaan" class="form-label">
-              Informasi Tambahan
-            </label>
-            <input
-              onChange={changeHandler}
-              type="text"
-              class="form-control"
-              id="nama-perusahaan"
-              name="informasiTambahan"
-              value={data.informasiTambahan}
-            />
-          </div>
-        </div>
+        </FormWrapper>
       </div>
     </>
   );

@@ -52,34 +52,36 @@ function Signs({ getPtClient }) {
             {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
           </button>
         </div>
-        <div className="card-body">
-          <div class="mb-3">
-            <label for="nama-perusahaan" class="form-label">
-              PT.
-            </label>
-            <input
-              placeholder="PT. ...."
-              type="text"
-              class="form-control"
-              id="nama-perusahaan"
-              name="namaPT"
-              value={data.namaPT}
-              onChange={changeHandler}
-            />
+        <FormWrapper in={open}>
+          <div className="card-body">
+            <div class="mb-3">
+              <label for="nama-perusahaan" class="form-label">
+                PT.
+              </label>
+              <input
+                placeholder="PT. ...."
+                type="text"
+                class="form-control"
+                id="nama-perusahaan"
+                name="namaPT"
+                value={data.namaPT}
+                onChange={changeHandler}
+              />
+            </div>
+            <div class="mb-3">
+              <label for="nama-perusahaan" class="form-label">
+                Tanda Tangan PT. {data.namaPT}
+              </label>
+              <input
+                type="file"
+                class="form-control"
+                id="nama-perusahaan"
+                name="ttd"
+                onChange={fileHandler}
+              />
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="nama-perusahaan" class="form-label">
-              Tanda Tangan PT. {data.namaPT}
-            </label>
-            <input
-              type="file"
-              class="form-control"
-              id="nama-perusahaan"
-              name="ttd"
-              onChange={fileHandler}
-            />
-          </div>
-        </div>
+        </FormWrapper>
       </div>
     </>
   );
