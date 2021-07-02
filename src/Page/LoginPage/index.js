@@ -1,12 +1,27 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Form, Button, Card, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
+// Context
+import { useAuth } from "../../Context/AuthContext";
 
 // Asset
 import "./style.css";
 
 function LoginPage() {
+  const { loginWithGoogle } = useAuth();
+  const history = useHistory();
+
+  const handleLoginWithGoogle = async () => {
+    try {
+      await loginWithGoogle();
+      history.push("/dashboard");
+    } catch (err) {
+      alert("ada yang salah");
+    }
+  };
+
   return (
     <>
       <Container
@@ -35,7 +50,11 @@ function LoginPage() {
                 </Button>
                 <hr />
               </Form>
-              <Button type="submit" className="w-100 mt-2 mb-4">
+              <Button
+                type="submit"
+                onClick={handleLoginWithGoogle}
+                className="w-100 mt-2 mb-4"
+              >
                 <FcGoogle /> Google
               </Button>
             </Card.Body>
