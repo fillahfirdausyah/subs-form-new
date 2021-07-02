@@ -52,7 +52,17 @@ function TypeofOrder({ getTypeofOrder }) {
   return (
     <>
       <div class="card text-white bg-dark-custom mb-3 card-custom">
-        <div class="card-header">Jenis Permintaan</div>
+        <div class="card-header d-flex align-items-center justify-content-between">
+          Jenis Permintaan
+          <button
+            type="button"
+            className="btn btn-sm btn-primary btn-collapsed"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+          >
+            {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
+          </button>
+        </div>
         <div class="card-body">
           <table className="main-page">
             <tr>

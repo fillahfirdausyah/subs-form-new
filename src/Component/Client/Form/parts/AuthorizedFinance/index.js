@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
-function AuthorizedFinance({ getAuthorizedFinance }) { 
+function AuthorizedFinance({ getAuthorizedFinance }) {
   const [open, setOpen] = useState(false);
   const [data, setaData] = useState({
     nama: "",
@@ -21,16 +21,26 @@ function AuthorizedFinance({ getAuthorizedFinance }) {
       ...data,
       [name]: value,
     };
-    setaData(newData)
+    setaData(newData);
     console.log(newData);
 
-    getAuthorizedFinance(newData)
+    getAuthorizedFinance(newData);
   };
 
   return (
     <>
       <div class="card text-white bg-dark-custom mb-3 card-custom">
-        <div class="card-header">Penanggung Jawab Keuangan</div>
+        <div class="card-header d-flex align-items-center justify-content-between">
+          Penanggung Jawab Keuangan
+          <button
+            type="button"
+            className="btn btn-sm btn-primary btn-collapsed"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+          >
+            {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
+          </button>
+        </div>
         <div class="card-body">
           <div class="mb-3">
             <label for="nama-perusahaan" class="form-label">

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
-function BillingAddres({getBillingAddress}) { 
+function BillingAddres({ getBillingAddress }) {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({});
 
@@ -13,14 +13,24 @@ function BillingAddres({getBillingAddress}) {
     const newData = {
       [name]: value,
     };
-    setData(newData)
-    getBillingAddress(newData)
+    setData(newData);
+    getBillingAddress(newData);
   };
 
   return (
     <>
       <div class="card text-white bg-dark-custom mb-3 card-custom">
-        <div class="card-header">Alamat Penagihan</div>
+        <div class="card-header d-flex align-items-center justify-content-between">
+          Alamat Penagihan
+          <button
+            type="button"
+            className="btn btn-sm btn-primary btn-collapsed"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+          >
+            {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
+          </button>
+        </div>
         <div className="card-body">
           <div class="mb-3">
             <textarea

@@ -25,7 +25,17 @@ function SubscriptionFee({ getSubscriptionFee }) {
   return (
     <>
       <div class="card text-white bg-dark-custom mb-3 card-custom">
-        <div class="card-header">Biaya Berlangganan</div>
+        <div class="card-header d-flex align-items-center justify-content-between">
+          Biaya Berlangganan
+          <button
+            type="button"
+            className="btn btn-sm btn-primary btn-collapsed"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+          >
+            {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
+          </button>
+        </div>
         <div className="card-body">
           <div class="mb-3">
             <label for="nama-perusahaan" class="form-label">

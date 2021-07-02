@@ -34,7 +34,17 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
   return (
     <>
       <div class="card text-white bg-dark-custom mb-3 card-custom">
-        <div class="card-header">Informasi Perusahaan Pelanggan</div>
+        <div class="card-header d-flex align-items-center justify-content-between">
+          Informasi Perusahaan Pelanggan
+          <button
+            type="button"
+            className="btn btn-sm btn-primary btn-collapsed"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+          >
+            {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
+          </button>
+        </div>
         <div class="card-body">
           <div class="mb-3">
             <label for="nama-perusahaan" class="form-label">
