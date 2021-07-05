@@ -15,7 +15,7 @@ function App() {
       <AuthProvider>
         <Switch>
           <Route path="/" exact>
-            <Redirect to="/dashboard" />
+            <h1>Hallo Selamat Datang</h1>
           </Route>
           <Route path="/login" exact>
             <LoginPage />
