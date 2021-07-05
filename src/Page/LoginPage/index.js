@@ -25,25 +25,27 @@ function LoginPage() {
       const rel = await login(email, password);
       if (rel.user.email.includes("buanalintas.co.id")) {
         console.log(true);
+        history.push("/marketing");
       } else {
         console.log(false);
+        history.push("/dashboard");
       }
     } catch (err) {}
   };
 
   const handleLoginWithGoogle = async () => {
     try {
-      const rel =  await loginWithGoogle();
+      const rel = await loginWithGoogle();
       if (rel.user.email.includes("buanalintas.co.id")) {
         console.log(true);
-        history.push('/marketing')
+        history.push("/marketing");
       } else {
         console.log(false);
-        history.push('/dashboard')
+        history.push("/dashboard");
       }
-      console.log(rel)
+      console.log(rel);
     } catch (err) {
-      alert('ada yang salah')
+      alert("ada yang salah");
     }
   };
 
