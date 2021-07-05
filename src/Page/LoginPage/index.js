@@ -10,7 +10,7 @@ import { useAuth } from "../../Context/AuthContext";
 import "./style.css";
 
 function LoginPage() {
-  const { loginWithGoogle, login, logout, currentUser } = useAuth();
+  const { loginWithGoogle, login } = useAuth();
   const history = useHistory();
 
   const emailRef = useRef();
@@ -22,9 +22,8 @@ function LoginPage() {
     const password = passwordRef.current.value;
 
     try {
-      await login(email, password);
-      let emailMarketing = currentUser.email;
-      if (emailMarketing.includes("buanalintas.co.id")) {
+      const rel = await login(email, password);
+      if (rel.user.email.includes("buanalintas.co.id")) {
         console.log(true);
       } else {
         console.log(false);
@@ -34,17 +33,17 @@ function LoginPage() {
 
   const handleLoginWithGoogle = async () => {
     try {
-      await loginWithGoogle();
-      let emailMarketing = currentUser.email;
-      if (emailMarketing.includes("buanalintas.co.id")) {
+      const rel =  await loginWithGoogle();
+      if (rel.user.email.includes("buanalintas.co.id")) {
         console.log(true);
         history.push('/marketing')
       } else {
         console.log(false);
         history.push('/dashboard')
       }
+      console.log(rel)
     } catch (err) {
-      alert("ada yang salah");
+      alert('ada yang salah')
     }
   };
 

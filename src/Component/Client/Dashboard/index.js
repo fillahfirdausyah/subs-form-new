@@ -39,13 +39,10 @@ function Dashboard() {
 
   const history = useHistory();
 
-  const handleLogout = async () => {
-    try {
-      await logout();
+  const handleLogout = () => {
+    logout().then((x) => {
       history.push("/login");
-    } catch (err) {
-      alert(err);
-    }
+    });
   };
 
   console.log(data);
