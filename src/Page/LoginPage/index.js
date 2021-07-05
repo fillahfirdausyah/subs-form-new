@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Form, Button, Card, Container } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
@@ -10,13 +10,39 @@ import { useAuth } from "../../Context/AuthContext";
 import "./style.css";
 
 function LoginPage() {
-  const { loginWithGoogle } = useAuth();
-  const history = useHistory(); 
+  const { loginWithGoogle, login, logout, currentUser } = useAuth();
+  const history = useHistory();
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    try {
+      await login(email, password);
+      let emailMarketing = currentUser.email;
+      if (emailMarketing.includes("buanalintas.co.id")) {
+        console.log(true);
+      } else {
+        console.log(false);
+      }
+    } catch (err) {}
+  };
 
   const handleLoginWithGoogle = async () => {
     try {
       await loginWithGoogle();
-      history.push("/dashboard");
+      let emailMarketing = currentUser.email;
+      if (emailMarketing.includes("buanalintas.co.id")) {
+        console.log(true);
+        history.push('/marketing')
+      } else {
+        console.log(false);
+        history.push('/dashboard')
+      }
     } catch (err) {
       alert("ada yang salah");
     }
@@ -36,14 +62,14 @@ function LoginPage() {
           >
             <Card.Body>
               <h2 className="text-center mb-4">Login</h2>
-              <Form>
+              <Form onSubmit={handleLogin}>
                 <Form.Group id="email">
                   <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" required />
+                  <Form.Control type="email" required ref={emailRef} />
                 </Form.Group>
                 <Form.Group id="password" className="mt-4">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" required />
+                  <Form.Control type="password" required ref={passwordRef} />
                 </Form.Group>
                 <Button type="submit" className="w-100 mt-4">
                   Login
