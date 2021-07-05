@@ -8,6 +8,7 @@ import { AuthProvider } from "./Context/AuthContext";
 import LoginPage from "./Page/LoginPage";
 import HomePage from "./Page/HomePage";
 import FormPage from "./Page/FormPage";
+import MarketingPage from "./Page/MarketingPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <LoginPage />
           </Route>
           <ProtectedRoute path="/dashboard" component={HomePage} />
+          <ProtectedRoute path="/marketing" component={MarketingPage} />
           <Route path="/form" exact>
             <FormPage />
           </Route>
