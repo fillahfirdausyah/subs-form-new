@@ -86,9 +86,12 @@ function Dashboard() {
                           <li>Email : {x.infoPerusahaan.alamatEmail}</li>
                           <li>Penanggun Jawab: {x.authorized.nama}</li>
                         </p>
-                        <a href="" className="btn btn-primary">
+                        <Link
+                          className="btn btn-primary"
+                          to={`/preview/${x.id}`}
+                        >
                           <VisibilityIcon />
-                        </a>
+                        </Link>
                         <a href="" className="btn mx-2 btn-success">
                           <EditIcon />
                         </a>
