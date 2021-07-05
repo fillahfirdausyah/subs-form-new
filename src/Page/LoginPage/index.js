@@ -11,7 +11,7 @@ import "./style.css";
 
 function LoginPage() {
   const { loginWithGoogle } = useAuth();
-  const history = useHistory();
+  const history = useHistory(); 
 
   const handleLoginWithGoogle = async () => {
     try {

@@ -1,6 +1,5 @@
 import firebase from "firebase";
 import "firebase/auth";
-import admin from 'firebase-admin'
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -14,7 +13,6 @@ const config = {
 
 const app = firebase.initializeApp(config);
 
-export const admins = admin.initializeApp(config)
 export const auth = app.auth();
 export const provider = new firebase.auth.GoogleAuthProvider();
 export const database = new firebase.database();

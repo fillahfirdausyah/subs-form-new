@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import { database } from "../../../firebase";
 
 // Icon
 import VisibilityIcon from "@material-ui/icons/Visibility";
@@ -17,6 +18,24 @@ import "./style.css";
 
 function Dashboard() {
   const { logout, currentUser } = useAuth();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    let ref = database.ref(`data/${currentUser.uid}`);
+    ref.on("value", (res) => {
+      const newData = [];
+      const snap = res.val();
+      for (const key in snap) {
+        const x = {
+          id: key,
+          ...snap[key],
+        };
+
+        newData.push(x);
+      }
+      setData(newData);
+    });
+  }, []);
 
   const history = useHistory();
 
@@ -28,6 +47,8 @@ function Dashboard() {
       alert(err);
     }
   };
+
+  console.log(data);
 
   return (
     <div className="dashboard">
@@ -57,28 +78,30 @@ function Dashboard() {
             </div>
             <div className="list-subsform mt-3">
               <div className="row">
-                <div className="col-6 mt-3">
-                  <div class="card card-list-form bg-primary">
-                    <div class="card-body">
-                      <h5 class="card-title" style={{ fontWeight: "100px" }}>
-                        PT. Avengers
-                      </h5>
-                      <p class="card-text">
-                        <li>Email : Avengers@avengers.com</li>
-                        <li>Penanggun Jawab: Tony Stark</li>
-                      </p>
-                      <a href="" className="btn btn-primary">
-                        <VisibilityIcon />
-                      </a>
-                      <a href="" className="btn mx-2 btn-success">
-                        <EditIcon />
-                      </a>
-                      <a href="" className="btn btn-danger">
-                        <DeleteIcon />
-                      </a>
+                {data.map((x, index) => (
+                  <div className="col-6 mt-3" key={x.id}>
+                    <div class="card card-list-form bg-primary">
+                      <div class="card-body">
+                        <h5 class="card-title" style={{ fontWeight: "100px" }}>
+                          {x.infoPerusahaan.namaPerusahaan}
+                        </h5>
+                        <p class="card-text">
+                          <li>Email : {x.infoPerusahaan.alamatEmail}</li>
+                          <li>Penanggun Jawab: {x.authorized.nama}</li>
+                        </p>
+                        <a href="" className="btn btn-primary">
+                          <VisibilityIcon />
+                        </a>
+                        <a href="" className="btn mx-2 btn-success">
+                          <EditIcon />
+                        </a>
+                        <a href="" className="btn btn-danger">
+                          <DeleteIcon />
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

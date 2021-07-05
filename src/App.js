@@ -1,4 +1,5 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
+import ProtectedRoute from "./Component/ProtectedRoute";
 
 // Context
 import { AuthProvider } from "./Context/AuthContext";
@@ -13,12 +14,13 @@ function App() {
     <div className="App">
       <AuthProvider>
         <Switch>
+          <Route path="/" exact>
+            <Redirect to="/dashboard" />
+          </Route>
           <Route path="/login" exact>
             <LoginPage />
           </Route>
-          <Route path="/dashboard" exact>
-            <HomePage />
-          </Route>
+          <ProtectedRoute path="/dashboard" component={HomePage} />
           <Route path="/form" exact>
             <FormPage />
           </Route>
