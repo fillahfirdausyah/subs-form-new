@@ -84,7 +84,7 @@ function Dashboard() {
                         </h5>
                         <p class="card-text">
                           <li>Email : {x.infoPerusahaan.alamatEmail}</li>
-                          <li>Penanggun Jawab: {x.authorized.nama}</li>
+                          <li>Penanggung Jawab: {x.authorized.nama}</li>
                         </p>
                         <Link
                           className="btn btn-primary"
