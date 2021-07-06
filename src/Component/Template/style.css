@@ -185,6 +185,10 @@ table textarea {
   text-align: left;
 }
 
+.filled-by {
+  padding-bottom: 50px;
+}
+
 .dokumen {
   margin-top: 10px;
 }

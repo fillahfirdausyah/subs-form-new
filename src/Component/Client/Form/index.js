@@ -75,7 +75,6 @@ function Form(props) {
   const prosesHandler = (e) => {
     e.preventDefault();
 
-    // setData(infoPerusahaan)
     const data = {
       information,
       typeofOrder,

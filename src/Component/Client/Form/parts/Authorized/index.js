@@ -167,32 +167,36 @@ function Authorized({ getAuthorized }) {
               </div>
             </div>
             <div class="mb-3">
-              <label for="jenis-usaha" class="form-label">
-                No. Kartu Identitas
-              </label>
-              <input
-                required
-                type="number"
-                onChange={changeHandler}
-                class="form-control"
-                id="jenis-usaha"
-                name="noKartuId"
-                value={data.noKartuId}
-              />
-            </div>
-            <div class="mb-3">
-              <label for="jenis-usaha" class="form-label">
-                Masa Berlaku
-              </label>
-              <input
-                required
-                type="text"
-                onChange={changeHandler}
-                class="form-control"
-                id="jenis-usaha"
-                name="masaBerlaku"
-                value={data.masaBerlaku}
-              />
+              <div className="row">
+                <div className="col">
+                  <label for="jenis-usaha" class="form-label">
+                    No. Kartu Identitas
+                  </label>
+                  <input
+                    required
+                    type="number"
+                    onChange={changeHandler}
+                    class="form-control"
+                    id="jenis-usaha"
+                    name="noKartuId"
+                    value={data.noKartuId}
+                  />
+                </div>
+                <div className="col">
+                  <label for="jenis-usaha" class="form-label">
+                    Masa Berlaku
+                  </label>
+                  <input
+                    required
+                    type="date"
+                    onChange={changeHandler}
+                    class="form-control"
+                    id="jenis-usaha"
+                    name="masaBerlaku"
+                    value={data.masaBerlaku}
+                  />
+                </div>
+              </div>
             </div>
             <div class="mb-3">
               <label for="jenis-usaha" class="form-label">
