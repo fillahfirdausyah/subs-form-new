@@ -55,6 +55,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 Nama Perusahaan
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -68,6 +69,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 Group Perusahaan
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -81,6 +83,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 Jenis Usaha
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -109,6 +112,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                     Kota
                   </label>
                   <input
+                    required
                     onChange={changeHandler}
                     type="text"
                     class="form-control"
@@ -122,6 +126,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                     Kode Pos
                   </label>
                   <input
+                    required
                     onChange={changeHandler}
                     type="number"
                     class="form-control"
@@ -137,6 +142,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 Provinsi
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -150,6 +156,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 Alamat Situs
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -163,6 +170,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 Alamat Email
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -176,6 +184,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 NPWP
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -189,6 +198,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 Telephone
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 placeholder="Kode Area / Nomor"
@@ -203,6 +213,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 Fax
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 placeholder="Kode Area / Nomor"

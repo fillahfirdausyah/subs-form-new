@@ -5,6 +5,7 @@ function Radio(props) {
     <>
       <div class="form-check">
         <input
+          required
           class="form-check-input"
           type="radio"
           name={props.name}

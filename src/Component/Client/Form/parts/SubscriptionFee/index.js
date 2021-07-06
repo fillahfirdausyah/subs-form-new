@@ -45,6 +45,7 @@ function SubscriptionFee({ getSubscriptionFee }) {
               Biaya Set Up
             </label>
             <input
+              required
               onChange={changeHandler}
               type="number"
               placeholder="Rp...."
@@ -59,6 +60,7 @@ function SubscriptionFee({ getSubscriptionFee }) {
               Biaya Layanan
             </label>
             <input
+              required
               onChange={changeHandler}
               type="number"
               placeholder="Rp...."

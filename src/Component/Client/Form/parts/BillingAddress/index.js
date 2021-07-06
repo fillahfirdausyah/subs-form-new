@@ -38,6 +38,7 @@ function BillingAddres({ getBillingAddress }) {
           <div className="card-body">
             <div class="mb-3">
               <textarea
+                required
                 class="form-control"
                 id="alamat"
                 rows="3"

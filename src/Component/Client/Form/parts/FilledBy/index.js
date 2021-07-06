@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 // Icon
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
@@ -20,6 +20,7 @@ function Filledby(props) {
               Nama Marketing
             </label>
             <input
+              required
               type="text"
               class="form-control"
               id="nama-perusahaan"
@@ -33,6 +34,7 @@ function Filledby(props) {
               Tanggal
             </label>
             <input
+              required
               type="date"
               class="form-control"
               id="nama-perusahaan"

@@ -50,6 +50,7 @@ function AuthorizedTechnical({ getAuthorizedTechnical }) {
                 Nama
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -63,6 +64,7 @@ function AuthorizedTechnical({ getAuthorizedTechnical }) {
                 Bagian
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -76,6 +78,7 @@ function AuthorizedTechnical({ getAuthorizedTechnical }) {
                 Jabatan
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -89,6 +92,7 @@ function AuthorizedTechnical({ getAuthorizedTechnical }) {
                 Telephone
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="number"
                 placeholder="Kode Area / Nomor"
@@ -103,6 +107,7 @@ function AuthorizedTechnical({ getAuthorizedTechnical }) {
                 Handphone
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="number"
                 class="form-control"
@@ -116,6 +121,7 @@ function AuthorizedTechnical({ getAuthorizedTechnical }) {
                 Fax
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="number"
                 placeholder="Kode Area / Nomor"
@@ -130,6 +136,7 @@ function AuthorizedTechnical({ getAuthorizedTechnical }) {
                 Alamat Email
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"

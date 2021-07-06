@@ -51,6 +51,7 @@ function AuthorizedFinance({ getAuthorizedFinance }) {
                 Nama
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -64,6 +65,7 @@ function AuthorizedFinance({ getAuthorizedFinance }) {
                 Bagian
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -77,6 +79,7 @@ function AuthorizedFinance({ getAuthorizedFinance }) {
                 Jabatan
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -90,6 +93,7 @@ function AuthorizedFinance({ getAuthorizedFinance }) {
                 Telephone
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="number"
                 placeholder="Kode Area / Nomor"
@@ -104,6 +108,7 @@ function AuthorizedFinance({ getAuthorizedFinance }) {
                 Fax
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="number"
                 placeholder="Kode Area / Nomor"
@@ -118,6 +123,7 @@ function AuthorizedFinance({ getAuthorizedFinance }) {
                 Alamat Email
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"

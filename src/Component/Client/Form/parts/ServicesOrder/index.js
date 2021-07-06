@@ -91,6 +91,7 @@ function ServiceOrder({ getServiceOrder }) {
                 Spesifikasi Layanan
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -104,6 +105,7 @@ function ServiceOrder({ getServiceOrder }) {
                 Informasi Tambahan
               </label>
               <input
+                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"

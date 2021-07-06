@@ -39,6 +39,7 @@ function InstallationAddres({ getInstallationAddress }) {
           <div className="card-body">
             <div class="mb-3">
               <textarea
+                required
                 onChange={changeHandler}
                 class="form-control"
                 id="alamat"
