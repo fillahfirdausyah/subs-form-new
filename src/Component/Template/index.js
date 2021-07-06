@@ -80,7 +80,9 @@ function Template(props) {
               <ServiceOrder />
 
               {/* Alamat Installastion */}
-              <InstallationAddress />
+              <InstallationAddress
+                data={x.installationAddress.installationAddress}
+              />
 
               {/* Biayan Berlangganan */}
               <SubscriptionFee />

@@ -1,6 +1,6 @@
 import React from "react";
 
-function InstallationAddress() {
+function InstallationAddress({ data }) {
   return (
     <div className="instalation-address">
       <table>
@@ -14,7 +14,8 @@ function InstallationAddress() {
           <tr>
             <td>
               <textarea
-                name=""
+                disabled
+                value={data}
                 id=""
                 style={{ width: "90%", height: "90px" }}
               ></textarea>
