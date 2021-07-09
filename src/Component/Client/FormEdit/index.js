@@ -3,9 +3,6 @@ import DoneIcon from "@material-ui/icons/Done";
 import { database } from "../../../firebase";
 import { useAuth } from "../../../Context/AuthContext";
 
-// Asset
-import "./style.css";
-
 // Component
 import Information from "./parts/Information";
 import TypeofOrder from "./parts/TypeofOrder";
@@ -18,7 +15,7 @@ import ServiceOrder from "./parts/ServicesOrder";
 import InstallationAddres from "./parts/InstallationAddress";
 import Signs from "./parts/Signs";
 
-function Form(props) {
+function FormEdit({ editData }) {
   const { currentUser } = useAuth();
 
   const [information, setInformation] = useState({});
@@ -94,7 +91,7 @@ function Form(props) {
       client,
     };
 
-    props.postData(data);
+    // props.postData(data);
   };
 
   return (
@@ -103,34 +100,48 @@ function Form(props) {
         <div className="w-100 form-main" style={{ maxWidth: "700px" }}>
           <form onSubmit={prosesHandler} className="form-client">
             {/* Informasi */}
-            <Information getInformation={getInformation} />
+            <Information getInformation={getInformation} editData={editData} />
 
             {/* Jenis Permintaan */}
-            <TypeofOrder getTypeofOrder={getTypeofOrder} />
+            <TypeofOrder getTypeofOrder={getTypeofOrder} editData={editData} />
 
             {/* Informasi Perusahaan Pelanggan */}
-            <InformasiPerusahaan getInfoPerushaan={getInfoPerushaan} />
+            <InformasiPerusahaan
+              getInfoPerushaan={getInfoPerushaan}
+              editData={editData}
+            />
 
             {/* Penanggung Jawab Perusahaan */}
-            <Authorized getAuthorized={getAuthorized} />
+            <Authorized getAuthorized={getAuthorized} editData={editData} />
 
             {/* Penanggung Jawab Keuangan */}
-            <AuthorizedFinance getAuthorizedFinance={getAuthorizedFinance} />
+            <AuthorizedFinance
+              getAuthorizedFinance={getAuthorizedFinance}
+              editData={editData}
+            />
 
             {/* Alamat Penagihan */}
-            <BillingAddress getBillingAddress={getBillingAddress} />
+            <BillingAddress
+              getBillingAddress={getBillingAddress}
+              editData={editData}
+            />
 
             {/* Penanggung Jawab Teknis */}
             <AuthorizedTechnical
               getAuthorizedTechnical={getAuthorizedTechnical}
+              editData={editData}
             />
 
             {/* Layanan yang diminta */}
-            <ServiceOrder getServiceOrder={getServiceOrder} />
+            <ServiceOrder
+              getServiceOrder={getServiceOrder}
+              editData={editData}
+            />
 
             {/* Alamat Instalasi */}
             <InstallationAddres
               getInstallationAddress={getInstallationAddress}
+              editData={editData}
             />
 
             {/* Tanda Tangan */}
@@ -146,4 +157,4 @@ function Form(props) {
   );
 }
 
-export default Form;
+export default FormEdit;

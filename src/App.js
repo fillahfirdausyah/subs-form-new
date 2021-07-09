@@ -10,6 +10,7 @@ import HomePage from "./Page/HomePage";
 import FormPage from "./Page/FormPage";
 import MarketingPage from "./Page/MarketingPage";
 import PreviewPage from "./Page/PreviewPage";
+import EditPage from "./Page/EditPage";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/preview/:id" exact>
             <PreviewPage />
+          </Route>
+          <Route path="/edit/:id" exact>
+            <EditPage />
           </Route>
           <ProtectedRoute path="/dashboard" component={HomePage} />
           <ProtectedRoute path="/marketing" component={MarketingPage} />

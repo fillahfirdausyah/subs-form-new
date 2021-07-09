@@ -45,8 +45,6 @@ function Dashboard() {
     });
   };
 
-  console.log(data);
-
   return (
     <div className="dashboard">
       <Container
@@ -92,9 +90,12 @@ function Dashboard() {
                         >
                           <VisibilityIcon />
                         </Link>
-                        <a href="" className="btn mx-2 btn-success">
+                        <Link
+                          className="btn mx-2 btn-success"
+                          to={`/edit/${x.id}`}
+                        >
                           <EditIcon />
-                        </a>
+                        </Link>
                         <a href="" className="btn btn-danger">
                           <DeleteIcon />
                         </a>

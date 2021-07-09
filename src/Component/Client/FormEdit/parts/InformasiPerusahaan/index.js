@@ -7,7 +7,7 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 // Component
 import FormWrapper from "../FormWrapper";
 
-function InformasiPerusahaan({ getInfoPerushaan }) {
+function InformasiPerusahaan({ getInfoPerushaan, editData }) {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({
     namaPerusahaan: "",
@@ -23,6 +23,33 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
     telephone: "",
     fax: "",
   });
+
+  function getFakeData() {
+    return new Promise((resolve) => setTimeout(() => resolve(editData), 1000));
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let hasil = await getFakeData();
+
+      setData({
+        namaPerusahaan: hasil.infoPerusahaan.namaPerusahaan,
+        groupPerusahaan: hasil.infoPerusahaan.groupPerusahaan,
+        jenisUsaha: hasil.infoPerusahaan.jenisUsaha,
+        alamat: hasil.infoPerusahaan.alamat,
+        kota: hasil.infoPerusahaan.kota,
+        kodePos: hasil.infoPerusahaan.kodePos,
+        provinsi: hasil.infoPerusahaan.provinsi,
+        alamatSitus: hasil.infoPerusahaan.alamatSitus,
+        alamatEmail: hasil.infoPerusahaan.alamatEmail,
+        npwp: hasil.infoPerusahaan.npwp,
+        telephone: hasil.infoPerusahaan.telephone,
+        fax: hasil.infoPerusahaan.fax,
+      });
+    };
+
+    fetchData();
+  }, []);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
