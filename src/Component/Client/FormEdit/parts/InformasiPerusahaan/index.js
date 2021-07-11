@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { database } from "../../../../../firebase";
+import { useAuth } from "../../../../../Context/AuthContext";
 
 // Icon
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
@@ -7,8 +9,10 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 // Component
 import FormWrapper from "../FormWrapper";
 
-function InformasiPerusahaan({ getInfoPerushaan, editData }) {
+function InformasiPerusahaan({ getInfoPerushaan, id }) {
+  const { currentUser } = useAuth();
   const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({
     namaPerusahaan: "",
     groupPerusahaan: "",
@@ -24,31 +28,12 @@ function InformasiPerusahaan({ getInfoPerushaan, editData }) {
     fax: "",
   });
 
-  function getFakeData() {
-    return new Promise((resolve) => setTimeout(() => resolve(editData), 1000));
-  }
-
   useEffect(() => {
-    const fetchData = async () => {
-      let hasil = await getFakeData();
-
-      setData({
-        namaPerusahaan: hasil.infoPerusahaan.namaPerusahaan,
-        groupPerusahaan: hasil.infoPerusahaan.groupPerusahaan,
-        jenisUsaha: hasil.infoPerusahaan.jenisUsaha,
-        alamat: hasil.infoPerusahaan.alamat,
-        kota: hasil.infoPerusahaan.kota,
-        kodePos: hasil.infoPerusahaan.kodePos,
-        provinsi: hasil.infoPerusahaan.provinsi,
-        alamatSitus: hasil.infoPerusahaan.alamatSitus,
-        alamatEmail: hasil.infoPerusahaan.alamatEmail,
-        npwp: hasil.infoPerusahaan.npwp,
-        telephone: hasil.infoPerusahaan.telephone,
-        fax: hasil.infoPerusahaan.fax,
-      });
-    };
-
-    fetchData();
+    let ref = database.ref(`data/${currentUser.uid}/${id}`);
+    ref.on("value", (snapshot) => {
+      let theData = snapshot.val();
+      setData(theData.infoPerusahaan);
+    });
   }, []);
 
   const changeHandler = (e) => {
@@ -60,6 +45,10 @@ function InformasiPerusahaan({ getInfoPerushaan, editData }) {
     setData(iko);
     getInfoPerushaan(iko);
   };
+
+  if (isLoading) {
+    return <h1>Loading....</h1>;
+  }
 
   return (
     <>

@@ -15,7 +15,7 @@ import ServiceOrder from "./parts/ServicesOrder";
 import InstallationAddres from "./parts/InstallationAddress";
 import Signs from "./parts/Signs";
 
-function FormEdit({ editData }) {
+function FormEdit({ id }) {
   const { currentUser } = useAuth();
 
   const [information, setInformation] = useState({});
@@ -100,48 +100,34 @@ function FormEdit({ editData }) {
         <div className="w-100 form-main" style={{ maxWidth: "700px" }}>
           <form onSubmit={prosesHandler} className="form-client">
             {/* Informasi */}
-            <Information getInformation={getInformation} editData={editData} />
+            <Information getInformation={getInformation} />
 
             {/* Jenis Permintaan */}
-            <TypeofOrder getTypeofOrder={getTypeofOrder} editData={editData} />
+            <TypeofOrder getTypeofOrder={getTypeofOrder} />
 
             {/* Informasi Perusahaan Pelanggan */}
-            <InformasiPerusahaan
-              getInfoPerushaan={getInfoPerushaan}
-              editData={editData}
-            />
+            <InformasiPerusahaan id={id} getInfoPerushaan={getInfoPerushaan} />
 
             {/* Penanggung Jawab Perusahaan */}
-            <Authorized getAuthorized={getAuthorized} editData={editData} />
+            <Authorized getAuthorized={getAuthorized} />
 
             {/* Penanggung Jawab Keuangan */}
-            <AuthorizedFinance
-              getAuthorizedFinance={getAuthorizedFinance}
-              editData={editData}
-            />
+            <AuthorizedFinance getAuthorizedFinance={getAuthorizedFinance} />
 
             {/* Alamat Penagihan */}
-            <BillingAddress
-              getBillingAddress={getBillingAddress}
-              editData={editData}
-            />
+            <BillingAddress getBillingAddress={getBillingAddress} />
 
             {/* Penanggung Jawab Teknis */}
             <AuthorizedTechnical
               getAuthorizedTechnical={getAuthorizedTechnical}
-              editData={editData}
             />
 
             {/* Layanan yang diminta */}
-            <ServiceOrder
-              getServiceOrder={getServiceOrder}
-              editData={editData}
-            />
+            <ServiceOrder getServiceOrder={getServiceOrder} />
 
             {/* Alamat Instalasi */}
             <InstallationAddres
               getInstallationAddress={getInstallationAddress}
-              editData={editData}
             />
 
             {/* Tanda Tangan */}
