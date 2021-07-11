@@ -109,29 +109,34 @@ function FormEdit({ id }) {
             <InformasiPerusahaan id={id} getInfoPerushaan={getInfoPerushaan} />
 
             {/* Penanggung Jawab Perusahaan */}
-            <Authorized getAuthorized={getAuthorized} />
+            <Authorized id={id} getAuthorized={getAuthorized} />
 
             {/* Penanggung Jawab Keuangan */}
-            <AuthorizedFinance getAuthorizedFinance={getAuthorizedFinance} />
+            <AuthorizedFinance
+              id={id}
+              getAuthorizedFinance={getAuthorizedFinance}
+            />
 
             {/* Alamat Penagihan */}
-            <BillingAddress getBillingAddress={getBillingAddress} />
+            <BillingAddress id={id} getBillingAddress={getBillingAddress} />
 
             {/* Penanggung Jawab Teknis */}
             <AuthorizedTechnical
+              id={id}
               getAuthorizedTechnical={getAuthorizedTechnical}
             />
 
             {/* Layanan yang diminta */}
-            <ServiceOrder getServiceOrder={getServiceOrder} />
+            <ServiceOrder id={id} getServiceOrder={getServiceOrder} />
 
             {/* Alamat Instalasi */}
             <InstallationAddres
+              id={id}
               getInstallationAddress={getInstallationAddress}
             />
 
             {/* Tanda Tangan */}
-            <Signs getPtClient={getPtClient} />
+            <Signs id={id} getPtClient={getPtClient} />
 
             <button type="submit" className="btn-proses">
               <DoneIcon />
