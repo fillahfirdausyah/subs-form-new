@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { database } from "../../../../../firebase";
+import { useAuth } from "../../../../../Context/AuthContext";
 
 // Icon
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
@@ -8,12 +10,21 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import Radio from "../../../../Radio";
 import FormWrapper from "../FormWrapper";
 
-function ServiceOrder({ getServiceOrder }) {
+function ServiceOrder({ getServiceOrder, id }) {
+  const { currentUser } = useAuth();
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({
     spesifikasiLayanan: "",
     informasiTambahan: "",
   });
+
+  useEffect(() => {
+    let ref = database.ref(`data/${currentUser.uid}/${id}`);
+    ref.on("value", (snap) => {
+      let theData = snap.val();
+      setData(theData.serviceOrder);
+    });
+  }, []);
 
   const radioData = [
     {
