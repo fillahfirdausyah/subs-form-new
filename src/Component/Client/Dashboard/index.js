@@ -19,6 +19,7 @@ import "./style.css";
 function Dashboard() {
   const { logout, currentUser } = useAuth();
   const [data, setData] = useState([]);
+  const [fetch, setFetch] = useState(false);
 
   useEffect(() => {
     let ref = database.ref(`data/${currentUser.uid}`);
@@ -35,9 +36,16 @@ function Dashboard() {
       }
       setData(newData);
     });
-  }, []);
+  }, [fetch]);
 
   const history = useHistory();
+
+  const deleteHandler = (id) => {
+    setFetch(true);
+    let ref = database.ref(`data/${currentUser.uid}/${id}`);
+    ref.remove();
+    setFetch(false);
+  };
 
   const handleLogout = () => {
     logout().then((x) => {
@@ -96,9 +104,12 @@ function Dashboard() {
                         >
                           <EditIcon />
                         </Link>
-                        <a href="" className="btn btn-danger">
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => deleteHandler(x.id)}
+                        >
                           <DeleteIcon />
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
