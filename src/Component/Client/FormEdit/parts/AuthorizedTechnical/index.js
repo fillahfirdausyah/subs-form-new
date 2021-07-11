@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { database } from "../../../../../firebase";
+import { useAuth } from "../../../../../Context/AuthContext";
 
 // Icon
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
@@ -7,7 +9,8 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 // Component
 import FormWrapper from "../FormWrapper";
 
-function AuthorizedTechnical({ getAuthorizedTechnical }) {
+function AuthorizedTechnical({ getAuthorizedTechnical, id }) {
+  const { currentUser } = useAuth();
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({
     nama: "",
@@ -18,6 +21,14 @@ function AuthorizedTechnical({ getAuthorizedTechnical }) {
     fax: "",
     email: "",
   });
+
+  useEffect(() => {
+    let ref = database.ref(`data/${currentUser.uid}/${id}`);
+    ref.on("value", (snap) => {
+      let theData = snap.val();
+      setData(theData.authorizedTechnical);
+    });
+  }, []);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
