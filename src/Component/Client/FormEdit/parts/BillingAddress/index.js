@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { database } from "../../../../../firebase";
+import { useAuth } from "../../../../../Context/AuthContext";
 
 // Icon
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
@@ -7,9 +9,18 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 // Component
 import FormWrapper from "../FormWrapper";
 
-function BillingAddres({ getBillingAddress }) {
+function BillingAddres({ getBillingAddress, id }) {
+  const { currentUser } = useAuth();
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({});
+
+  useEffect(() => {
+    let ref = database.ref(`data/${currentUser.uid}/${id}`);
+    ref.on("value", (snap) => {
+      let theData = snap.val();
+      setData(theData.billingAddress);
+    });
+  }, []);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
