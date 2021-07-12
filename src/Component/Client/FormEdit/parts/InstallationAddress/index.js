@@ -19,6 +19,7 @@ function InstallationAddres({ getInstallationAddress, id }) {
     ref.on("value", (snap) => {
       let theData = snap.val();
       setData(theData.installationAddress);
+      getInstallationAddress(theData.installationAddress);
     });
   }, []);
 

@@ -26,6 +26,7 @@ function AuthorizedFinance({ getAuthorizedFinance, id }) {
     ref.on("value", (snap) => {
       let theData = snap.val();
       setaData(theData.authorizedFinance);
+      getAuthorizedFinance(theData.authorizedFinance);
     });
   }, []);
 
@@ -36,7 +37,6 @@ function AuthorizedFinance({ getAuthorizedFinance, id }) {
       [name]: value,
     };
     setaData(newData);
-    console.log(newData);
 
     getAuthorizedFinance(newData);
   };
@@ -66,7 +66,6 @@ function AuthorizedFinance({ getAuthorizedFinance, id }) {
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
-                id="nama-perusahaan"
                 name="nama"
                 value={data.nama}
               />
@@ -80,7 +79,6 @@ function AuthorizedFinance({ getAuthorizedFinance, id }) {
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
-                id="nama-perusahaan"
                 name="bagian"
                 value={data.bagian}
               />

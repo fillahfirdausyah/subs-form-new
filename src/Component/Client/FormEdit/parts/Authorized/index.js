@@ -26,11 +26,12 @@ function Authorized({ getAuthorized, id }) {
   });
 
   useEffect(() => {
-    let ref = database.ref(`data/${currentUser.uid}/${id}`)
-    ref.on('value', (snap) => {
-      let theData = snap.val()
-      setData(theData.authorized)
-    })
+    let ref = database.ref(`data/${currentUser.uid}/${id}`);
+    ref.on("value", (snap) => {
+      let theData = snap.val();
+      setData(theData.authorized);
+      getAuthorized(theData.authorized);
+    });
   }, []);
 
   const kartuData = [

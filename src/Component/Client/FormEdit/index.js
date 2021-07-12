@@ -15,7 +15,7 @@ import ServiceOrder from "./parts/ServicesOrder";
 import InstallationAddres from "./parts/InstallationAddress";
 import Signs from "./parts/Signs";
 
-function FormEdit({ id }) {
+function FormEdit({ id, updateData }) {
   const { currentUser } = useAuth();
 
   const [information, setInformation] = useState({});
@@ -91,7 +91,7 @@ function FormEdit({ id }) {
       client,
     };
 
-    // props.postData(data);
+    updateData(data);
   };
 
   return (
@@ -100,7 +100,7 @@ function FormEdit({ id }) {
         <div className="w-100 form-main" style={{ maxWidth: "700px" }}>
           <form onSubmit={prosesHandler} className="form-client">
             {/* Informasi */}
-            <Information getInformation={getInformation} />
+            <Information id={id} getInformation={getInformation} />
 
             {/* Jenis Permintaan */}
             <TypeofOrder getTypeofOrder={getTypeofOrder} />

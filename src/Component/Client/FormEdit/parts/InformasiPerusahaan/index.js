@@ -33,6 +33,7 @@ function InformasiPerusahaan({ getInfoPerushaan, id }) {
     ref.on("value", (snapshot) => {
       let theData = snapshot.val();
       setData(theData.infoPerusahaan);
+      getInfoPerushaan(theData.infoPerusahaan)
     });
   }, []);
 

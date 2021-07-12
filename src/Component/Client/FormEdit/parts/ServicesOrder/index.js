@@ -23,6 +23,7 @@ function ServiceOrder({ getServiceOrder, id }) {
     ref.on("value", (snap) => {
       let theData = snap.val();
       setData(theData.serviceOrder);
+      getServiceOrder(theData.serviceOrder)
     });
   }, []);
 

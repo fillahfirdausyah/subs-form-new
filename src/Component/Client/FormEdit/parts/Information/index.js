@@ -13,16 +13,23 @@ function Information({ getInformation, id }) {
   const { currentUser } = useAuth();
   const [open, setOpen] = useState(false);
   const [tanggal, setTanggal] = useState("");
-  const [fpb, setFpb] = useState("");
-  const [cid, setCid] = useState("");
+  const [data, setData] = useState({
+    fpb: "",
+    cid: "",
+  });
 
   useEffect(() => {
     let ref = database.ref(`data/${currentUser.uid}/${id}`);
     ref.on("value", (snap) => {
       let theData = snap.val();
-      setTanggal(theData.information.tggl);
-      setFpb(theData.information.fpb);
-      setCid(theData.information.cid);
+      setData(theData.information);
+      let newTggl = new Date(theData.information.tggl);
+      setTanggal(newTggl.toISOString().substring(0, 10));
+      const newData = {
+        ...theData.information,
+        tggl: tanggal,
+      };
+      getInformation(newData);
     });
   }, []);
 
@@ -63,7 +70,7 @@ function Information({ getInformation, id }) {
                 class="form-control"
                 id="no-fpb"
                 disabled
-                value={fpb}
+                value={data.fpb}
               />
             </div>
             <div class="mb-3">
@@ -75,7 +82,7 @@ function Information({ getInformation, id }) {
                 class="form-control"
                 id="no-cid"
                 disabled
-                value={cid}
+                value={data.cid}
               />
             </div>
           </div>

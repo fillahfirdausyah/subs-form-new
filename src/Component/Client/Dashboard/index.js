@@ -35,6 +35,7 @@ function Dashboard() {
         newData.push(x);
       }
       setData(newData);
+      console.log(data);
     });
   }, [fetch]);
 
@@ -82,7 +83,7 @@ function Dashboard() {
             <div className="list-subsform mt-3">
               <div className="row">
                 {data.map((x, index) => (
-                  <div className="col-6 mt-3" key={x.id}>
+                  <div className="col-md-6 mt-3" key={x.id}>
                     <div class="card card-list-form bg-primary">
                       <div class="card-body">
                         <h5 class="card-title" style={{ fontWeight: "100px" }}>
