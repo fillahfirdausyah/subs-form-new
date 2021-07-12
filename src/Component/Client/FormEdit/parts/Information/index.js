@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { database } from "../../../../../firebase";
+import { useAuth } from "../../../../../Context/AuthContext";
 
 // Icon
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
@@ -8,67 +9,21 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 // Component
 import FormWrapper from "../FormWrapper";
 
-function Information({ getInformation }) {
-  let [no, setNo] = useState(0);
+function Information({ getInformation, id }) {
+  const { currentUser } = useAuth();
   const [open, setOpen] = useState(false);
-
-  let ts = Date.now();
-  let date_ob = new Date(ts);
-  let month = date_ob.getMonth() + 1;
-  let year = date_ob.getFullYear();
-  let currentDate = date_ob.toISOString().substring(0, 10);
-
-  let roman;
-
-  const convertRoman = (x) => {
-    if (x === 1) {
-      return (roman = "I");
-    } else if (x === 2) {
-      return (roman = "II");
-    } else if (x === 3) {
-      return (roman = "III");
-    } else if (x === 4) {
-      return (roman = "IV");
-    } else if (x === 5) {
-      return (roman = "V");
-    } else if (x === 6) {
-      return (roman = "VI");
-    } else if (x === 7) {
-      return (roman = "VII");
-    } else if (x === 8) {
-      return (roman = "VIII");
-    } else if (x === 9) {
-      return (roman = "IX");
-    } else if (x === 10) {
-      return (roman = "X");
-    } else if (x === 11) {
-      return (roman = "XI");
-    } else if (x === 12) {
-      roman = "XII";
-    }
-  };
-
-  const info1 = `${year}0${month}`;
-  const fpb = `/FPB/205/${convertRoman(month)}/${year}`;
-
-  const hasil = `${info1}00${no + 1}${fpb}`;
+  const [tanggal, setTanggal] = useState("");
+  const [fpb, setFpb] = useState("");
+  const [cid, setCid] = useState("");
 
   useEffect(() => {
-    database.ref("data").on("value", (snap) => {
-      let total = 0;
-      snap.forEach((x) => {
-        total += x.numChildren();
-      });
-      setNo(total);
+    let ref = database.ref(`data/${currentUser.uid}/${id}`);
+    ref.on("value", (snap) => {
+      let theData = snap.val();
+      setTanggal(theData.information.tggl);
+      setFpb(theData.information.fpb);
+      setCid(theData.information.cid);
     });
-
-    const newData = {
-      tggl: currentDate,
-      fpb: hasil,
-      cid: info1,
-    };
-
-    getInformation(newData);
   }, []);
 
   return (
@@ -95,8 +50,8 @@ function Information({ getInformation }) {
                 type="date"
                 class="form-control"
                 id="date"
-                value={currentDate}
                 disabled
+                value={tanggal}
               />
             </div>
             <div class="mb-3">
@@ -107,8 +62,8 @@ function Information({ getInformation }) {
                 type="text"
                 class="form-control"
                 id="no-fpb"
-                value={hasil}
                 disabled
+                value={fpb}
               />
             </div>
             <div class="mb-3">
@@ -119,8 +74,8 @@ function Information({ getInformation }) {
                 type="text"
                 class="form-control"
                 id="no-cid"
-                value={info1}
                 disabled
+                value={cid}
               />
             </div>
           </div>
