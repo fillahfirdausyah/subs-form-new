@@ -23,13 +23,10 @@ function Information({ getInformation, id }) {
     ref.on("value", (snap) => {
       let theData = snap.val();
       setData(theData.information);
-      let newTggl = new Date(theData.information.tggl);
+      let t = theData.information.tggl;
+      let newTggl = new Date(t);
       setTanggal(newTggl.toISOString().substring(0, 10));
-      const newData = {
-        ...theData.information,
-        tggl: tanggal,
-      };
-      getInformation(newData);
+      getInformation(theData.information);
     });
   }, []);
 

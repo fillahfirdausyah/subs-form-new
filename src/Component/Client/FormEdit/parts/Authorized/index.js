@@ -13,6 +13,7 @@ import FormWrapper from "../FormWrapper";
 function Authorized({ getAuthorized, id }) {
   const { currentUser } = useAuth();
   const [open, setOpen] = useState(false);
+  const [kartu, setkartu] = useState([])
   const [data, setData] = useState({
     nama: "",
     ttlTempat: "",
@@ -24,15 +25,6 @@ function Authorized({ getAuthorized, id }) {
     masaBerlaku: "",
     email: "",
   });
-
-  useEffect(() => {
-    let ref = database.ref(`data/${currentUser.uid}/${id}`);
-    ref.on("value", (snap) => {
-      let theData = snap.val();
-      setData(theData.authorized);
-      getAuthorized(theData.authorized);
-    });
-  }, []);
 
   const kartuData = [
     {
@@ -60,6 +52,21 @@ function Authorized({ getAuthorized, id }) {
       label: "PASPOR",
     },
   ];
+
+  useEffect(() => {
+    let ref = database.ref(`data/${currentUser.uid}/${id}`);
+    ref.on("value", (snap) => {
+      let theData = snap.val();
+      setData(theData.authorized);
+      getAuthorized(theData.authorized);
+      kartuData.forEach(x => {
+        if(theData.authorized.kartuID == x.val) {
+          x.checked = true
+        }
+      })
+      setkartu(kartuData)
+    });
+  }, []);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -165,13 +172,14 @@ function Authorized({ getAuthorized, id }) {
                 Kartu Identitas
               </label>
               <div className="row">
-                {kartuData.map((x) => (
+                {kartu.map((x) => (
                   <div className="col">
                     <Radio
                       label={x.label}
                       id={x.id}
                       value={x.val}
                       name={x.name}
+                      checked={x.checked && true}
                       onChange={changeHandler}
                     />
                   </div>

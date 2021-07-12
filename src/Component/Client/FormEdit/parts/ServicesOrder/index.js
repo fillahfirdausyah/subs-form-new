@@ -13,19 +13,11 @@ import FormWrapper from "../FormWrapper";
 function ServiceOrder({ getServiceOrder, id }) {
   const { currentUser } = useAuth();
   const [open, setOpen] = useState(false);
+  const [radio, setRadio] = useState([]);
   const [data, setData] = useState({
     spesifikasiLayanan: "",
     informasiTambahan: "",
   });
-
-  useEffect(() => {
-    let ref = database.ref(`data/${currentUser.uid}/${id}`);
-    ref.on("value", (snap) => {
-      let theData = snap.val();
-      setData(theData.serviceOrder);
-      getServiceOrder(theData.serviceOrder)
-    });
-  }, []);
 
   const radioData = [
     {
@@ -53,6 +45,21 @@ function ServiceOrder({ getServiceOrder, id }) {
       val: "SoftWareAsService",
     },
   ];
+
+  useEffect(() => {
+    let ref = database.ref(`data/${currentUser.uid}/${id}`);
+    ref.on("value", (snap) => {
+      let theData = snap.val();
+      setData(theData.serviceOrder);
+      getServiceOrder(theData.serviceOrder);
+      radioData.forEach((x) => {
+        if (theData.serviceOrder.serviceOrder == x.val) {
+          x.checked = true;
+        }
+      });
+      setRadio(radioData);
+    });
+  }, []);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -86,12 +93,13 @@ function ServiceOrder({ getServiceOrder, id }) {
                 Jenis Layanan
               </label>
               <div className="row">
-                {radioData.map((x) => (
+                {radio.map((x) => (
                   <div className="col">
                     <Radio
                       name={x.name}
                       value={x.val}
                       label={x.label}
+                      checked={x.checked && true}
                       onChange={changeHandler}
                     />
                   </div>

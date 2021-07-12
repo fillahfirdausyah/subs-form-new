@@ -103,7 +103,7 @@ function FormEdit({ id, updateData }) {
             <Information id={id} getInformation={getInformation} />
 
             {/* Jenis Permintaan */}
-            <TypeofOrder getTypeofOrder={getTypeofOrder} />
+            <TypeofOrder id={id} getTypeofOrder={getTypeofOrder} />
 
             {/* Informasi Perusahaan Pelanggan */}
             <InformasiPerusahaan id={id} getInfoPerushaan={getInfoPerushaan} />

@@ -12,6 +12,7 @@ function Radio(props) {
           id={props.id}
           value={props.value}
           onChange={props.onChange}
+          checked={props.checked && true}
         />
         <label class="form-check-label" for={props.id}>
           {props.label}

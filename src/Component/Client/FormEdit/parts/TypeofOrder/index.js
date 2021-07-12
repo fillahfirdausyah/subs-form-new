@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { database } from "../../../../../firebase";
+import { useAuth } from "../../../../../Context/AuthContext";
 
 // Icon
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
@@ -8,36 +10,52 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import Radio from "../../../../Radio";
 import FormWrapper from "../FormWrapper";
 
-function TypeofOrder({ getTypeofOrder }) {
+function TypeofOrder({ getTypeofOrder, id }) {
+  const { currentUser } = useAuth();
+
   const [open, setOpen] = useState(false);
   const [other, setOther] = useState("");
+  const [xkl, setXkl] = useState([]);
 
-  const xkl = [
+  const item = [
     {
       name: "TypeofOrder",
       label: "New Installation",
       val: "New Installation",
-      id: "newInstallation",
+      id: 1,
     },
     {
       name: "TypeofOrder",
       label: "Upgrade",
       val: "Upgrade",
-      id: "upgrade",
+      id: 2,
     },
     {
       name: "TypeofOrder",
       label: "Down Grade",
       val: "Down Grade",
-      id: "downGrade",
+      id: 3,
     },
     {
       name: "TypeofOrder",
       label: "Renewal",
       val: "Renewal",
-      id: "renewal",
+      id: 4,
     },
   ];
+
+  useEffect(() => {
+    let ref = database.ref(`data/${currentUser.uid}/${id}`);
+    ref.on("value", (snap) => {
+      let theData = snap.val();
+      item.forEach((x) => {
+        if (Object.keys(theData.typeofOrder) == x.val) {
+          x.checked = true;
+        }
+      });
+      setXkl(item);
+    });
+  }, []);
 
   const otherHandler = (e) => {
     const iko = e.target.value;
@@ -77,6 +95,7 @@ function TypeofOrder({ getTypeofOrder }) {
                       id={x.id}
                       label={x.label}
                       value={x.val}
+                      checked={x.checked && true}
                       onChange={radioHandler}
                     />
                   ))}

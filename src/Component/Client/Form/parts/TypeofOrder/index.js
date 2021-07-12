@@ -17,25 +17,25 @@ function TypeofOrder({ getTypeofOrder }) {
       name: "TypeofOrder",
       label: "New Installation",
       val: "New Installation",
-      id: "newInstallation",
+      id: 1,
     },
     {
       name: "TypeofOrder",
       label: "Upgrade",
       val: "Upgrade",
-      id: "upgrade",
+      id: 2,
     },
     {
       name: "TypeofOrder",
       label: "Down Grade",
       val: "Down Grade",
-      id: "downGrade",
+      id: 3,
     },
     {
       name: "TypeofOrder",
       label: "Renewal",
       val: "Renewal",
-      id: "renewal",
+      id: 4,
     },
   ];
 
