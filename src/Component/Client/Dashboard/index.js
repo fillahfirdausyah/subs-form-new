@@ -35,7 +35,7 @@ function Dashboard() {
         newData.push(x);
       }
       setData(newData);
-      console.log(data);
+      console.log(snap)
     });
   }, [fetch]);
 

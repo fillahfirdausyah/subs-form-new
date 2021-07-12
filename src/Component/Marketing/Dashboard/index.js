@@ -21,19 +21,25 @@ function Dashboard() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    let ref = database.ref(`data/${currentUser.uid}`);
+    let ref = database.ref(`data`);
     ref.on("value", (res) => {
       const newData = [];
+      const newObj = []
+      let baru = {};
       const snap = res.val();
-      for (const key in snap) {
+      res.forEach((x, i) => {
+        let node = x.val();
+        newObj.push(node)
+      });
+      let obj = Object.assign({}, ...newObj)
+      for (const key in obj) {
         const x = {
           id: key,
-          ...snap[key],
-        };
-
-        newData.push(x);
+          ...obj[key]
+        }
+        newData.push(x)
       }
-      setData(newData);
+      setData(newData)
     });
   }, []);
 
@@ -47,8 +53,6 @@ function Dashboard() {
       alert(err);
     }
   };
-
-  console.log(data);
 
   return (
     <div className="dashboard">
@@ -72,7 +76,7 @@ function Dashboard() {
           </div>
           <div class="card-body mt-4">
             <div className="list-form d-flex align-items-center justify-content-between">
-              <h3>Daftar Subsform</h3>
+              <h3>Daftar Client</h3>
             </div>
             <div className="list-subsform mt-3">
               <div className="row">

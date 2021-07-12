@@ -23,7 +23,7 @@ function LoginPage() {
 
     try {
       const rel = await login(email, password);
-      if (rel.user.email.includes("buanalintas.co.id")) {
+      if (rel.user.email.includes("students.amikom.ac.id")) {
         console.log(true);
         history.push("/marketing");
       } else {
@@ -36,7 +36,7 @@ function LoginPage() {
   const handleLoginWithGoogle = async () => {
     try {
       const rel = await loginWithGoogle();
-      if (rel.user.email.includes("buanalintas.co.id")) {
+      if (rel.user.email.includes("students.amikom.ac.id")) {
         console.log(true);
         history.push("/marketing");
       } else {
