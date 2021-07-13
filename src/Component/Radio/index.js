@@ -22,4 +22,24 @@ function Radio(props) {
   );
 }
 
+export function RadioTemplate(props) {
+  return (
+    <>
+      <input
+        required
+        class="form-check-input template"
+        type="radio"
+        name={props.name}
+        id={props.id}
+        value={props.value}
+        onChange={props.onChange}
+        checked={props.checked && true}
+      />
+      <label class="form-check-label template" for={props.id}>
+        {props.label}
+      </label>
+    </>
+  );
+}
+
 export default Radio;
