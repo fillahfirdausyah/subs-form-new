@@ -1,6 +1,6 @@
 import React from "react";
 
-function ServiceOrder() {
+function ServiceOrder({ data }) {
   return (
     <div className="services-order">
       <table>
@@ -35,7 +35,7 @@ function ServiceOrder() {
               <p className="font-italic">Spesification of Services</p>
             </td>
             <td>
-              <input type="text" />
+              <input type="text" disabled value={data.spesifikasiLayanan} />
             </td>
           </tr>
           <tr>
@@ -44,7 +44,7 @@ function ServiceOrder() {
               <p className="font-italic">Additional Info</p>
             </td>
             <td>
-              <input type="text" />
+              <input type="text" disabled value={data.informasiTambahan} />
             </td>
           </tr>
         </tbody>
