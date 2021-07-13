@@ -26,7 +26,7 @@ function App() {
           <Route path="/form" exact>
             <FormPage />
           </Route>
-          <Route path="/preview/:id" exact>
+          <Route path="/preview/:uid/:id" exact>
             <PreviewPage />
           </Route>
           <Route path="/edit/:id" exact>
