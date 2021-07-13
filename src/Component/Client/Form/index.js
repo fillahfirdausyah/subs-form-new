@@ -92,6 +92,7 @@ function Form(props) {
       serviceOrder,
       installationAddress,
       client,
+      uid: currentUser.uid
     };
 
     props.postData(data);

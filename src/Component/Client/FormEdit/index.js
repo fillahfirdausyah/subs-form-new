@@ -89,6 +89,7 @@ function FormEdit({ id, updateData }) {
       serviceOrder,
       installationAddress,
       client,
+      uid: currentUser.uid
     };
 
     updateData(data);
