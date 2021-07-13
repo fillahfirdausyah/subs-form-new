@@ -11,10 +11,15 @@ textarea:focus {
   outline: none;
 }
 
-[type="checkbox"] {
+input.template[type="radio"] {
+  margin-top: -2px;
   vertical-align: middle;
-  width: 18px;
-  height: 18px;
+  margin-left: 10px;
+}
+
+label.template {
+  margin-left: 5px;
+  font-size: 13px;
 }
 
 input:disabled {
@@ -193,11 +198,12 @@ table textarea {
   margin-top: 10px;
 }
 
-.input-document {
+/* .input-document {
   display: grid;
   grid-template-columns: auto auto;
+  grid-column-gap: 10px;
   margin-top: 10px;
-}
+} */
 
 /* 612px x 792px is our default size of a PDF */
 .pdf {
