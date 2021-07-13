@@ -28,6 +28,7 @@
   
   .card-text li {
     list-style: none;
+    font-size: 14px;
   }
   
   .card-body > .main {
