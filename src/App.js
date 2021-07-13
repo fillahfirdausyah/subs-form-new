@@ -11,6 +11,7 @@ import FormPage from "./Page/FormPage";
 import MarketingPage from "./Page/MarketingPage";
 import PreviewPage from "./Page/PreviewPage";
 import EditPage from "./Page/EditPage";
+import LengkapiPage from "./Page/LengkapiPage";
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/preview/:uid/:id" exact>
             <PreviewPage />
+          </Route>
+          <Route path="/lengkapi/:uid/:id" exact>
+            <LengkapiPage />
           </Route>
           <Route path="/edit/:id" exact>
             <EditPage />

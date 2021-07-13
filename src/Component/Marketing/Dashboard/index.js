@@ -96,9 +96,12 @@ function Dashboard() {
                         >
                           <VisibilityIcon />
                         </Link>
-                        <a href="" className="btn mx-2 btn-success">
+                        <Link
+                          to={`lengkapi/${x.uid}/${x.id}`}
+                          className="btn mx-2 btn-success"
+                        >
                           <EditIcon />
-                        </a>
+                        </Link>
                         <a href="" className="btn btn-danger">
                           <DeleteIcon />
                         </a>
