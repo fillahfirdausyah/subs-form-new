@@ -8,12 +8,10 @@ import Template from "../../Component/Template";
 
 function PreviewPage() {
   const [data, setData] = useState([]);
-  const { id } = useParams();
-
-  const { currentUser } = useAuth();
+  const { uid, id } = useParams();
 
   useEffect(() => {
-    let ref = database.ref(`/data/${currentUser.uid}/${id}`);
+    let ref = database.ref(`/data/${uid}/${id}`);
     ref.on("value", (snap) => {
       setData([snap.val()]);
     });
