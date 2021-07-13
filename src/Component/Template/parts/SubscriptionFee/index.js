@@ -18,7 +18,11 @@ function SubscriptionFee({ data }) {
               <span>(One Time Charge)</span>
             </td>
             <td>
-              <input type="text" disabled value={data.biayaSetUp} />
+              {data == undefined ? (
+                <input type="text" disabled />
+              ) : (
+                <input type="text" disabled value={data.biayaSetUp} />
+              )}
             </td>
           </tr>
           <br />
@@ -31,7 +35,11 @@ function SubscriptionFee({ data }) {
               <span>(Monthly Charge)</span>
             </td>
             <td>
-              <input type="text" disabled value={data.biayaLayanan} />
+              {data == undefined ? (
+                <input type="text" disabled />
+              ) : (
+                <input type="text" disabled value={data.biayaLayanan} />
+              )}
             </td>
           </tr>
         </tbody>

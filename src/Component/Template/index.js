@@ -250,11 +250,19 @@ function Template(props) {
                     <table style={{ width: "300px" }}>
                       <tr>
                         <td>Marketing</td>
-                        <td>: {x.filledBy.nama}</td>
+                        {x.filledBy == undefined ? (
+                          <td>: </td>
+                        ) : (
+                          <td>: {x.filledBy.nama}</td>
+                        )}
                       </tr>
                       <tr>
                         <td>Tanggal / Date</td>
-                        <td>: {x.filledBy.tanggal}</td>
+                        {x.filledBy == undefined ? (
+                          <td>: </td>
+                        ) : (
+                          <td>: {x.filledBy.tanggal}</td>
+                        )}
                       </tr>
                     </table>
                   </tbody>
