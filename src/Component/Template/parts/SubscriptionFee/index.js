@@ -1,6 +1,6 @@
 import React from "react";
 
-function SubscriptionFee() {
+function SubscriptionFee({ data }) {
   return (
     <div className="subscription-fee">
       <table>
@@ -18,7 +18,7 @@ function SubscriptionFee() {
               <span>(One Time Charge)</span>
             </td>
             <td>
-              <input type="text" placeholder="Rp" />
+              <input type="text" disabled value={data.biayaSetUp} />
             </td>
           </tr>
           <br />
@@ -31,7 +31,7 @@ function SubscriptionFee() {
               <span>(Monthly Charge)</span>
             </td>
             <td>
-              <input type="text" placeholder="Rp" />
+              <input type="text" disabled value={data.biayaLayanan} />
             </td>
           </tr>
         </tbody>
