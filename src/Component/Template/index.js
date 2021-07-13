@@ -16,9 +16,29 @@ import ServiceOrder from "./parts/ServiceOrder";
 import InstallationAddress from "./parts/InstallationAddress";
 import SubscriptionFee from "./parts/SubscriptionFee";
 import Signs from "./parts/Signs";
+import Radio from "../Radio";
 
 function Template(props) {
-  console.log(props.data);
+  const radioData = [
+    {
+      name: "document",
+      id: "type1",
+      label: "Fotokopi KTP / Paspor / Copy of ID / Passport",
+      val: "Fotokpoi KTP Paspor",
+    },
+    {
+      name: "document",
+      id: "type2",
+      label: "Fotokopi NPWP / Copy of Tax Registered Number",
+      val: "Fotokopi NPWP",
+    },
+    {
+      name: "document",
+      id: "type2",
+      label: "Surat Kuasa (apabila dikuasakan)",
+      val: "Surat Kuasa",
+    },
+  ];
 
   return (
     <div className="pdf">
@@ -274,24 +294,15 @@ function Template(props) {
                       / Documents Requirements for New Customer
                     </span>
                     <div className="input-document">
-                      <div className="inp">
-                        <input type="checkbox" id="internet" />
-                        <label htmlFor="internet">
-                          Fotokopi KTP / Paspor / Copy of ID / Passport
-                        </label>
-                      </div>
-                      <div className="inp">
-                        <input type="checkbox" id="internet" />
-                        <label htmlFor="internet">
-                          Surat Kuasa (apabila dikuasakan)
-                        </label>
-                      </div>
-                      <div className="inp">
-                        <input type="checkbox" id="internet" />
-                        <label htmlFor="internet">
-                          Fotokopi NPWP / Copy of Tax Registered Number
-                        </label>
-                      </div>
+                      {radioData.map((x) => (
+                        <Radio
+                          name={x.name}
+                          key={x.id}
+                          id={x.id}
+                          label={x.label}
+                          value={x.val}
+                        />
+                      ))}
                     </div>
                   </div>
                 </table>
