@@ -24,22 +24,21 @@ function Dashboard() {
     let ref = database.ref(`data`);
     ref.on("value", (res) => {
       const newData = [];
-      const newObj = []
-      let baru = {};
+      const newObj = [];
       const snap = res.val();
       res.forEach((x, i) => {
         let node = x.val();
-        newObj.push(node)
+        newObj.push(node);
       });
-      let obj = Object.assign({}, ...newObj)
+      let obj = Object.assign({}, ...newObj);
       for (const key in obj) {
         const x = {
           id: key,
-          ...obj[key]
-        }
-        newData.push(x)
+          ...obj[key],
+        };
+        newData.push(x);
       }
-      setData(newData)
+      setData(newData);
     });
   }, []);
 
@@ -81,7 +80,7 @@ function Dashboard() {
             <div className="list-subsform mt-3">
               <div className="row">
                 {data.map((x, index) => (
-                  <div className="col-6 mt-3" key={x.id}>
+                  <div className="col-md-6 mt-3" key={x.id}>
                     <div class="card card-list-form bg-primary">
                       <div class="card-body">
                         <h5 class="card-title" style={{ fontWeight: "100px" }}>
@@ -91,9 +90,12 @@ function Dashboard() {
                           <li>Email : {x.infoPerusahaan.alamatEmail}</li>
                           <li>Penanggun Jawab: {x.authorized.nama}</li>
                         </p>
-                        <a href="" className="btn btn-primary">
+                        <Link
+                          className="btn btn-primary"
+                          to={`/preview/${x.uid}/${x.id}`}
+                        >
                           <VisibilityIcon />
-                        </a>
+                        </Link>
                         <a href="" className="btn mx-2 btn-success">
                           <EditIcon />
                         </a>

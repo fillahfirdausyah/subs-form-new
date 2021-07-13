@@ -95,7 +95,7 @@ function Dashboard() {
                         </p>
                         <Link
                           className="btn btn-primary"
-                          to={`/preview/${x.id}`}
+                          to={`/preview/${x.uid}/${x.id}`}
                         >
                           <VisibilityIcon />
                         </Link>
