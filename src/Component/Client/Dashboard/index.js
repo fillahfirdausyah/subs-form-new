@@ -35,7 +35,7 @@ function Dashboard() {
         newData.push(x);
       }
       setData(newData);
-      console.log(snap)
+      console.log(snap);
     });
   }, [fetch]);
 
@@ -99,12 +99,21 @@ function Dashboard() {
                         >
                           <VisibilityIcon />
                         </Link>
-                        <Link
-                          className="btn mx-2 btn-success"
-                          to={`/edit/${x.id}`}
-                        >
-                          <EditIcon />
-                        </Link>
+                        {x.filledBy == undefined ? (
+                          <Link
+                            className="btn mx-2 btn-success"
+                            to={`/edit/${x.id}`}
+                          >
+                            <EditIcon />
+                          </Link>
+                        ) : (
+                          <Link
+                            className="btn mx-2 btn-success disabled"
+                            to={`/edit/${x.id}`}
+                          >
+                            <EditIcon />
+                          </Link>
+                        )}
                         <button
                           className="btn btn-danger"
                           onClick={() => deleteHandler(x.id)}
