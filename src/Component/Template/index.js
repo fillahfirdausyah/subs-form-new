@@ -77,7 +77,7 @@ function Template(props) {
               <AuthorizedTechnical data={x.authorizedTechnical} />
 
               {/* Layanan Yang Diminta */}
-              <ServiceOrder />
+              <ServiceOrder data={x.serviceOrder} />
 
               {/* Alamat Installastion */}
               <InstallationAddress
@@ -85,7 +85,7 @@ function Template(props) {
               />
 
               {/* Biayan Berlangganan */}
-              <SubscriptionFee />
+              <SubscriptionFee data={x.subscriptionFee} />
 
               <div className="terms-and-conditions new-page">
                 <div className="section1">
@@ -250,11 +250,11 @@ function Template(props) {
                     <table style={{ width: "300px" }}>
                       <tr>
                         <td>Marketing</td>
-                        <td>: Bowo</td>
+                        <td>: {x.filledBy.nama}</td>
                       </tr>
                       <tr>
                         <td>Tanggal / Date</td>
-                        <td>: 02/20/2021</td>
+                        <td>: {x.filledBy.tanggal}</td>
                       </tr>
                     </table>
                   </tbody>
