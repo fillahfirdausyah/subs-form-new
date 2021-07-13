@@ -1,6 +1,36 @@
 import React from "react";
 
-function Authorized({data}) {
+// Compoenent
+import { RadioTemplate } from "../../../Radio";
+
+function Authorized({ data }) {
+  const radioData = [
+    {
+      name: "kartuID",
+      id: "ktp",
+      val: "KTP",
+      label: "KTP",
+    },
+    {
+      name: "kartuID",
+      id: "kim-s",
+      val: "KIM-S",
+      label: "KIM-S",
+    },
+    {
+      name: "kartuID",
+      id: "sim",
+      val: "SIM",
+      label: "SIM",
+    },
+    {
+      name: "kartuID",
+      id: "paspor",
+      val: "PASPOR",
+      label: "PASPOR",
+    },
+  ];
+
   return (
     <div className="authorized-person new-page">
       <div className="section1">
@@ -23,7 +53,7 @@ function Authorized({data}) {
               <p>Nama /</p> <p className="font-italic"> Name</p>
             </td>
             <td>
-              <input type="text" disabled value={data.nama}/>
+              <input type="text" disabled value={data.nama} />
             </td>
           </tr>
           <tr>
@@ -32,7 +62,11 @@ function Authorized({data}) {
               <p className="font-italic">Place, Date of Birth</p>
             </td>
             <td>
-              <input type="text" disabled value={`${data.ttlTempat}, ${data.ttlTggl}`}/>
+              <input
+                type="text"
+                disabled
+                value={`${data.ttlTempat}, ${data.ttlTggl}`}
+              />
             </td>
           </tr>
           <tr>
@@ -40,7 +74,7 @@ function Authorized({data}) {
               <p>Jabatan /</p> <p className="font-italic">Position</p>
             </td>
             <td>
-              <input type="text" disabled value={data.jabatan}/>
+              <input type="text" disabled value={data.jabatan} />
             </td>
           </tr>
           <tr>
@@ -48,7 +82,7 @@ function Authorized({data}) {
               <p>Telepone /</p> <p className="font-italic">Phone</p>
             </td>
             <td>
-              <input type="text" disabled value={data.telephone}/>
+              <input type="text" disabled value={data.telephone} />
               <br />
               <p>Kode Area / </p> <p className="font-italic">Area Code</p>
               {" | "}
@@ -60,14 +94,14 @@ function Authorized({data}) {
               <p>Kartu Identitas /</p> <p className="font-italic">ID Card</p>
             </td>
             <td className="id-card">
-              <input type="checkbox" />
-              <label htmlFor="NewInstalation">KTP</label>
-              <input type="checkbox" />
-              <label htmlFor="Upgrade">KIM-S</label>
-              <input type="checkbox" />
-              <label htmlFor="Upgrade">SIM</label>
-              <input type="checkbox" />
-              <label htmlFor="Upgrade">PASPOR</label>
+              {radioData.map((x) => (
+                <RadioTemplate
+                  label={x.label}
+                  id={x.id}
+                  value={x.val}
+                  name={x.name}
+                />
+              ))}
             </td>
           </tr>
           <tr>
@@ -75,7 +109,7 @@ function Authorized({data}) {
               <p>Masa Berlaku /</p> <p className="font-italic">Valid Until</p>
             </td>
             <td>
-              <input type="text" disabled value={data.masaBerlaku}/>
+              <input type="text" disabled value={data.masaBerlaku} />
             </td>
           </tr>
           <tr>
@@ -83,7 +117,7 @@ function Authorized({data}) {
               <p>Alamat Email /</p> <p className="font-italic">Email Address</p>
             </td>
             <td>
-              <input type="text" disabled value={data.email}/>
+              <input type="text" disabled value={data.email} />
             </td>
           </tr>
         </tbody>

@@ -1,6 +1,36 @@
 import React from "react";
 
+// Component
+import { RadioTemplate } from "../../../Radio";
+
 function ServiceOrder({ data }) {
+  const radioData = [
+    {
+      name: "serviceOrder",
+      id: "internet",
+      label: "INTERNET",
+      val: "Internet",
+    },
+    {
+      name: "serviceOrder",
+      id: "voip",
+      label: "VOIP",
+      val: "Voip",
+    },
+    {
+      name: "serviceOrder",
+      id: "vps",
+      label: "VPS",
+      val: "Vps",
+    },
+    {
+      name: "serviceOrder",
+      id: "internet",
+      label: "SOFTWARE AS SERVICE ",
+      val: "SoftWareAsService",
+    },
+  ];
+
   return (
     <div className="services-order">
       <table>
@@ -17,16 +47,9 @@ function ServiceOrder({ data }) {
               <p className="font-italic">Kind of Services</p>
             </td>
             <td className="services" colSpan="2">
-              <input type="checkbox" id="internet" />
-              <label htmlFor="internet">Internet</label>
-              <input type="checkbox" />
-              <label htmlFor="Upgrade">VOIP</label>
-              <input type="checkbox" />
-              <label htmlFor="Upgrade">VPS</label>
-              <input type="checkbox" />
-              <label htmlFor="Upgrade" className="label-upgrade">
-                <p>SOFTWARE AS SERVICE</p>
-              </label>
+              {radioData.map((x) => (
+                <RadioTemplate name={x.name} value={x.val} label={x.label} />
+              ))}
             </td>
           </tr>
           <tr>
