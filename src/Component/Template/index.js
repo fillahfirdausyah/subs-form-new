@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState, useEffect } from "react";
 import "./style.css";
 
 // Image
@@ -18,27 +18,28 @@ import SubscriptionFee from "./parts/SubscriptionFee";
 import Signs from "./parts/Signs";
 import Radio from "../Radio";
 
+const radioData = [
+  {
+    name: "document",
+    id: "type1",
+    label: "Fotokopi KTP / Paspor / Copy of ID / Passport",
+    val: "Fotokpoi KTP Paspor",
+  },
+  {
+    name: "document",
+    id: "type2",
+    label: "Fotokopi NPWP / Copy of Tax Registered Number",
+    val: "Fotokopi NPWP",
+  },
+  {
+    name: "document",
+    id: "type2",
+    label: "Surat Kuasa (apabila dikuasakan)",
+    val: "Surat Kuasa",
+  },
+];
+
 function Template(props) {
-  const radioData = [
-    {
-      name: "document",
-      id: "type1",
-      label: "Fotokopi KTP / Paspor / Copy of ID / Passport",
-      val: "Fotokpoi KTP Paspor",
-    },
-    {
-      name: "document",
-      id: "type2",
-      label: "Fotokopi NPWP / Copy of Tax Registered Number",
-      val: "Fotokopi NPWP",
-    },
-    {
-      name: "document",
-      id: "type2",
-      label: "Surat Kuasa (apabila dikuasakan)",
-      val: "Surat Kuasa",
-    },
-  ];
 
   return (
     <div className="pdf">
