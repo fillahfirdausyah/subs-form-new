@@ -213,7 +213,6 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 Fax
               </label>
               <input
-                required
                 onChange={changeHandler}
                 type="text"
                 placeholder="Kode Area / Nomor"
