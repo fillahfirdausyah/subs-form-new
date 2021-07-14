@@ -48,10 +48,17 @@ function Information({ getInformation }) {
     }
   };
 
-  const info1 = `${year}0${month}`;
   const fpb = `/FPB/205/${convertRoman(month)}/${year}`;
+  let info1 = "";
+  if (no >= 9 && no < 99) {
+    info1 = `${year}0${month}0${no + 1}`;
+  } else if (no >= 99) {
+    info1 = `${year}0${month}${no + 1}`;
+  } else {
+    info1 = `${year}0${month}00${no + 1}`;
+  }
 
-  const hasil = `${info1}00${no + 1}${fpb}`;
+  const hasil = `${info1}${fpb}`;
 
   useEffect(() => {
     database.ref("data").on("value", (snap) => {
