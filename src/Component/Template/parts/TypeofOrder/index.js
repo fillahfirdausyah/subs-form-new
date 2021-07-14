@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { database } from "../../../../firebase";
+import { useAuth } from "../../../../Context/AuthContext";
 
 // Component
 import { RadioTemplate } from "../../../Radio";
@@ -30,7 +32,23 @@ const radioData = [
   },
 ];
 
-function TypeofOrder(props) {
+function TypeofOrder({ data, uid, id }) {
+  const [xkl, setXkl] = useState([]);
+
+  useEffect(() => {
+    let ref = database.ref(`data/${uid}/${id}`);
+    ref.on("value", (snap) => {
+      let theData = snap.val();
+      radioData.forEach((x) => {
+        if (Object.keys(theData.typeofOrder) == x.val) {
+          x.checked = true;
+        }
+      });
+      setXkl(radioData);
+    });
+    console.log("1");
+  }, []);
+
   return (
     <div className="type-of-order">
       <table>
@@ -45,12 +63,13 @@ function TypeofOrder(props) {
               <p>Jenis permintaan / Type of Order</p>
             </td>
             <td>
-              {radioData.map((x) => (
+              {xkl.map((x) => (
                 <RadioTemplate
                   name={x.name}
                   key={x.id}
                   id={x.id}
                   label={x.label}
+                  checked={x.checked && true}
                   value={x.val}
                 />
               ))}
