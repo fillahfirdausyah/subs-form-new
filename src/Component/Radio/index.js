@@ -26,7 +26,6 @@ export function RadioTemplate(props) {
   return (
     <>
       <input
-        required
         class="form-check-input template"
         type="checkbox"
         name={props.name}
