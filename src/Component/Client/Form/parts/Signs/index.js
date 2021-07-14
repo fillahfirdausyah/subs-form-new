@@ -10,7 +10,7 @@ import FormWrapper from "../FormWrapper";
 function Signs({ getPtClient }) {
   const [open, setOpen] = useState(false);
   //   const [nama, setNama] = useState('')
-  //   const [file, setFile] = useState('')
+  // const [file, setFile] = useState("");
   const [data, setData] = useState({
     namaPT: "",
     ttd: "",
@@ -31,6 +31,7 @@ function Signs({ getPtClient }) {
   const fileHandler = (e) => {
     const newData = {
       ...data,
+      imgName: e.target.files[0].name,
       [e.target.name]: e.target.files[0],
     };
 
@@ -77,7 +78,6 @@ function Signs({ getPtClient }) {
                 required
                 type="file"
                 class="form-control"
-                id="nama-perusahaan"
                 name="ttd"
                 onChange={fileHandler}
               />
