@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DoneIcon from "@material-ui/icons/Done";
 
 // Component
 import SubscriptionFee from "./parts/SubscriptionFee";
@@ -32,23 +33,29 @@ function Form({ updateData }) {
     };
 
     updateData(newData);
+    // console.log(newData);
   };
 
   return (
     <div>
       <div className="main mt-5">
         <div className="container">
-          <form onSubmit={sumbitHandler}>
-            {/* Biaya Berlanggana */}
-            <SubscriptionFee getSubscriptionFee={getSubscriptionFee} />
+          <div className="w-100 form-main" style={{ maxWidth: "700px" }}>
+            <form onSubmit={sumbitHandler}>
+              {/* Biaya Berlanggana */}
+              <SubscriptionFee getSubscriptionFee={getSubscriptionFee} />
 
-            {/* Diisi Oleh */}
-            <Filledby getFilledBy={getFilledBy} />
+              {/* Diisi Oleh */}
+              <Filledby getFilledBy={getFilledBy} />
 
-            {/* Kelengkapan Dokumens */}
-            <DocumentReq getDocumentReq={getDocumentReq} />
-            <button>Submit</button>
-          </form>
+              {/* Kelengkapan Dokumens */}
+              <DocumentReq getDocumentReq={getDocumentReq} />
+
+              <button type="submit" className="btn-proses">
+                <DoneIcon />
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
