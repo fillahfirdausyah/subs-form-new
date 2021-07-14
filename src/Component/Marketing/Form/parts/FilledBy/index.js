@@ -10,7 +10,7 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 function Filledby({ getFilledBy }) {
   const { currentUser } = useAuth();
   const [nama, setNama] = useState("");
-  const [tanggal, setTanggal] = useState("");
+  const [data, setData] = useState({});
 
   useEffect(() => {
     setNama(currentUser.displayName);
@@ -24,9 +24,20 @@ function Filledby({ getFilledBy }) {
       tanggal: value,
     };
 
-    getFilledBy(newData);
+    setData(newData);
   };
 
+  const fileHandler = (e) => {
+    let date = Date.now();
+    const imgName = `${date}-${e.target.files[0].name}`;
+    const newData = {
+      ...data,
+      imgName,
+      [e.target.name]: e.target.files[0],
+    };
+
+    getFilledBy(newData);
+  };
   return (
     <>
       <div class="card text-white bg-dark-custom mb-3 card-custom">
@@ -57,6 +68,18 @@ function Filledby({ getFilledBy }) {
               id="nama-perusahaan"
               name="biayaLayanan"
               onChange={changeHandler}
+            />
+          </div>
+          <div className="mb-3">
+            <label for="nama-perusahaan" class="form-label">
+              Tanda Tangan PT. Buana Lintas Media
+            </label>
+            <input
+              required
+              type="file"
+              class="form-control"
+              name="ttd"
+              onChange={fileHandler}
             />
           </div>
         </div>
