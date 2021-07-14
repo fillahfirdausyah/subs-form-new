@@ -254,7 +254,7 @@ function Template(props) {
               </div>
 
               {/* Tanda Tangan */}
-              <Signs />
+              <Signs data={x.client} />
 
               <div className="filled-by">
                 <table className="filled-table">
