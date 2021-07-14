@@ -1,36 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { database } from "../../../../firebase";
+import { useAuth } from "../../../../Context/AuthContext";
 
 // Compoenent
 import { RadioTemplate } from "../../../Radio";
 
-function Authorized({ data }) {
-  const radioData = [
-    {
-      name: "kartuID",
-      id: "ktp",
-      val: "KTP",
-      label: "KTP",
-    },
-    {
-      name: "kartuID",
-      id: "kim-s",
-      val: "KIM-S",
-      label: "KIM-S",
-    },
-    {
-      name: "kartuID",
-      id: "sim",
-      val: "SIM",
-      label: "SIM",
-    },
-    {
-      name: "kartuID",
-      id: "paspor",
-      val: "PASPOR",
-      label: "PASPOR",
-    },
-  ];
+const radioData = [
+  {
+    name: "kartuID",
+    id: "ktp",
+    val: "KTP",
+    label: "KTP",
+  },
+  {
+    name: "kartuID",
+    id: "kim-s",
+    val: "KIM-S",
+    label: "KIM-S",
+  },
+  {
+    name: "kartuID",
+    id: "sim",
+    val: "SIM",
+    label: "SIM",
+  },
+  {
+    name: "kartuID",
+    id: "paspor",
+    val: "PASPOR",
+    label: "PASPOR",
+  },
+];
 
+function Authorized({ data, uid, id }) {
+  const [xkl, setXkl] = useState([]);
+
+  useEffect(() => {
+    let ref = database.ref(`data/${uid}/${id}`);
+    ref.on("value", (snap) => {
+      let theData = snap.val();
+      radioData.forEach((x) => {
+        if (theData.authorized.kartuID == x.val) {
+          x.checked = true;
+        }
+      });
+      setXkl(radioData);
+    });
+    console.log(xkl);
+  }, []);
   return (
     <div className="authorized-person new-page">
       <div className="section1">
@@ -94,12 +111,13 @@ function Authorized({ data }) {
               <p>Kartu Identitas /</p> <p className="font-italic">ID Card</p>
             </td>
             <td className="id-card">
-              {radioData.map((x) => (
+              {xkl.map((x) => (
                 <RadioTemplate
                   label={x.label}
                   id={x.id}
                   value={x.val}
                   name={x.name}
+                  checked={x.checked && true}
                 />
               ))}
             </td>
