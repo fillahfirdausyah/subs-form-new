@@ -97,7 +97,7 @@ function Template(props) {
               <AuthorizedTechnical data={x.authorizedTechnical} />
 
               {/* Layanan Yang Diminta */}
-              <ServiceOrder data={x.serviceOrder} />
+              <ServiceOrder data={x.serviceOrder} uid={x.uid} id={props.id} />
 
               {/* Alamat Installastion */}
               <InstallationAddress
