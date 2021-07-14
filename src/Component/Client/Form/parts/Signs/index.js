@@ -29,9 +29,11 @@ function Signs({ getPtClient }) {
   };
 
   const fileHandler = (e) => {
+    let date = Date.now();
+    const imgName = `${date}-${e.target.files[0].name}`;
     const newData = {
       ...data,
-      imgName: e.target.files[0].name,
+      imgName,
       [e.target.name]: e.target.files[0],
     };
 
