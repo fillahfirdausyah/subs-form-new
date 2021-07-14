@@ -79,7 +79,7 @@ function Template(props) {
             <Information data={x.information} />
             <div className="field">
               {/* TypeofOrder */}
-              <TypeofOrder data={x.typeofOrder} />
+              <TypeofOrder data={x.typeofOrder} uid={x.uid} id={props.id} />
 
               {/* Informasi Perusahaan */}
               <InformasiPerusahaan data={x.infoPerusahaan} />
