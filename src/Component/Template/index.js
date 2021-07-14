@@ -85,7 +85,7 @@ function Template(props) {
               <InformasiPerusahaan data={x.infoPerusahaan} />
 
               {/* Authorized */}
-              <Authorized data={x.authorized} />
+              <Authorized data={x.authorized} uid={x.uid} id={props.id} />
 
               {/* Penanggung Jawab Keuangan */}
               <AuthorizedFinance data={x.authorizedFinance} />
