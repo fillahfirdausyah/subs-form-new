@@ -11,7 +11,7 @@ textarea:focus {
   outline: none;
 }
 
-input.template[type="radio"] {
+input.template[type="checkbox"] {
   margin-top: -2px;
   vertical-align: middle;
   margin-left: 10px;
@@ -19,7 +19,8 @@ input.template[type="radio"] {
 
 label.template {
   margin-left: 5px;
-  font-size: 13px;
+  margin-right: 5px;
+  font-size: 12px;
 }
 
 input:disabled {
@@ -182,6 +183,12 @@ table textarea {
 .sign .line-pt-buana,
 .sign .line-pt {
   margin-top: 80px;
+}
+
+.line-pt img {
+  margin-top: -50px;
+  width: 250px;
+  height: 80px;
 }
 
 .filled-by table.filled-table thead {
