@@ -1,35 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { database } from "../../../../firebase";
+import { useAuth } from "../../../../Context/AuthContext";
 
 // Component
 import { RadioTemplate } from "../../../Radio";
 
-function ServiceOrder({ data }) {
-  const radioData = [
-    {
-      name: "serviceOrder",
-      id: "internet",
-      label: "INTERNET",
-      val: "Internet",
-    },
-    {
-      name: "serviceOrder",
-      id: "voip",
-      label: "VOIP",
-      val: "Voip",
-    },
-    {
-      name: "serviceOrder",
-      id: "vps",
-      label: "VPS",
-      val: "Vps",
-    },
-    {
-      name: "serviceOrder",
-      id: "internet",
-      label: "SOFTWARE AS SERVICE ",
-      val: "SoftWareAsService",
-    },
-  ];
+const radioData = [
+  {
+    name: "serviceOrder",
+    id: "internet",
+    label: "INTERNET",
+    val: "Internet",
+  },
+  {
+    name: "serviceOrder",
+    id: "voip",
+    label: "VOIP",
+    val: "Voip",
+  },
+  {
+    name: "serviceOrder",
+    id: "vps",
+    label: "VPS",
+    val: "Vps",
+  },
+  {
+    name: "serviceOrder",
+    id: "internet",
+    label: "SOFTWARE AS SERVICE ",
+    val: "SoftWareAsService",
+  },
+];
+
+function ServiceOrder({ data, uid, id }) {
+  const [xkl, setXkl] = useState([]);
+
+  useEffect(() => {
+    let ref = database.ref(`data/${uid}/${id}`);
+    ref.on("value", (snap) => {
+      let theData = snap.val();
+      radioData.forEach((x) => {
+        if (theData.serviceOrder.serviceOrder == x.val) {
+          x.checked = true;
+        }
+      });
+      setXkl(radioData);
+    });
+  }, []);
 
   return (
     <div className="services-order">
@@ -47,8 +64,13 @@ function ServiceOrder({ data }) {
               <p className="font-italic">Kind of Services</p>
             </td>
             <td className="services" colSpan="2">
-              {radioData.map((x) => (
-                <RadioTemplate name={x.name} value={x.val} label={x.label} />
+              {xkl.map((x) => (
+                <RadioTemplate
+                  name={x.name}
+                  value={x.val}
+                  label={x.label}
+                  checked={x.checked && true}
+                />
               ))}
             </td>
           </tr>
