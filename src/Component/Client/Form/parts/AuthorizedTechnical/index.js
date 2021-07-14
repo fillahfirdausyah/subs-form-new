@@ -121,7 +121,6 @@ function AuthorizedTechnical({ getAuthorizedTechnical }) {
                 Fax
               </label>
               <input
-                required
                 onChange={changeHandler}
                 type="number"
                 placeholder="Kode Area / Nomor"
@@ -130,6 +129,7 @@ function AuthorizedTechnical({ getAuthorizedTechnical }) {
                 name="fax"
                 value={data.fax}
               />
+              <div class="form-text">*{")"} Opsional</div>
             </div>
             <div class="mb-3">
               <label for="jenis-usaha" class="form-label">

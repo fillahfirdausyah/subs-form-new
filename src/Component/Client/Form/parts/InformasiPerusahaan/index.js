@@ -69,7 +69,6 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 Group Perusahaan
               </label>
               <input
-                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -77,6 +76,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 value={data.groupPerusahaan}
                 name="groupPerusahaan"
               />
+              <div class="form-text">*{")"} Opsional</div>
             </div>
             <div class="mb-3">
               <label for="jenis-usaha" class="form-label">
@@ -222,6 +222,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 value={data.fax}
                 name="fax"
               />
+              <div class="form-text">*{")"} Opsional</div>
             </div>
           </div>
         </FormWrapper>
