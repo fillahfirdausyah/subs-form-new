@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { RadioTemplate } from "../../../Radio";
+import { database } from "../../../../firebase";
 
 const radioData = [
   {
@@ -22,8 +23,21 @@ const radioData = [
   },
 ];
 
-function FilledBy({ data }) {
+function FilledBy({ data, uid, id }) {
   const [xkl, setXkl] = useState([]);
+
+  useEffect(() => {
+    let ref = database.ref(`data/${uid}/${id}`);
+    ref.on("value", (snap) => {
+      let theData = snap.val();
+      radioData.forEach((x) => {
+        if (Object.keys(theData.documentReq) == x.val) {
+          x.checked = true;
+        }
+      });
+      setXkl(radioData);
+    });
+  }, []);
 
   return (
     <>
@@ -55,7 +69,7 @@ function FilledBy({ data }) {
               / Documents Requirements for New Customer
             </span>
             <div className="input-document">
-              {radioData.map((x) => (
+              {xkl.map((x) => (
                 <div className="row">
                   <div className="col">
                     <RadioTemplate
@@ -64,6 +78,7 @@ function FilledBy({ data }) {
                       id={x.id}
                       label={x.label}
                       value={x.val}
+                      checked={x.checked && true}
                     />
                   </div>
                 </div>
