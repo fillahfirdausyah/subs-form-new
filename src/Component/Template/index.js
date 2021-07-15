@@ -16,31 +16,9 @@ import ServiceOrder from "./parts/ServiceOrder";
 import InstallationAddress from "./parts/InstallationAddress";
 import SubscriptionFee from "./parts/SubscriptionFee";
 import Signs from "./parts/Signs";
-import Radio from "../Radio";
-
-const radioData = [
-  {
-    name: "document",
-    id: "type1",
-    label: "Fotokopi KTP / Paspor / Copy of ID / Passport",
-    val: "Fotokpoi KTP Paspor",
-  },
-  {
-    name: "document",
-    id: "type2",
-    label: "Fotokopi NPWP / Copy of Tax Registered Number",
-    val: "Fotokopi NPWP",
-  },
-  {
-    name: "document",
-    id: "type2",
-    label: "Surat Kuasa (apabila dikuasakan)",
-    val: "Surat Kuasa",
-  },
-];
+import FilledBy from "./parts/FilledBy";
 
 function Template(props) {
-
   return (
     <div className="pdf">
       <header>
@@ -257,57 +235,8 @@ function Template(props) {
               {/* Tanda Tangan */}
               <Signs data={x.client} />
 
-              <div className="filled-by">
-                <table className="filled-table">
-                  <thead>
-                    <th colSpan="2">
-                      <span className="font-bold">Diisi oleh Buanalintas</span>{" "}
-                      <span className="font-italic">
-                        / Filled by Buanalintas
-                      </span>
-                    </th>
-                  </thead>
-                  <tbody>
-                    <table style={{ width: "300px" }}>
-                      <tr>
-                        <td>Marketing</td>
-                        {x.filledBy == undefined ? (
-                          <td>: </td>
-                        ) : (
-                          <td>: {x.filledBy.nama}</td>
-                        )}
-                      </tr>
-                      <tr>
-                        <td>Tanggal / Date</td>
-                        {x.filledBy == undefined ? (
-                          <td>: </td>
-                        ) : (
-                          <td>: {x.filledBy.tanggal}</td>
-                        )}
-                      </tr>
-                    </table>
-                  </tbody>
-                  <div className="dokumen">
-                    <span className="font-bold">
-                      Kelengkapan dokumen pelanggan baru
-                    </span>{" "}
-                    <span className="font-italic">
-                      / Documents Requirements for New Customer
-                    </span>
-                    <div className="input-document">
-                      {radioData.map((x) => (
-                        <Radio
-                          name={x.name}
-                          key={x.id}
-                          id={x.id}
-                          label={x.label}
-                          value={x.val}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </table>
-              </div>
+              {/* Diisi Oleh */}
+              <FilledBy data={x.filledBy}/>
             </div>
           </Content>
         ))}
