@@ -95,11 +95,6 @@ section .section1 {
   margin-top: 20px;
 }
 
-.field .type-of-order input {
-  width: 20px;
-  height: 20px;
-}
-
 table {
   width: 100%;
   border: 1px solid black;
@@ -186,10 +181,11 @@ table textarea {
   margin-top: 80px;
 }
 
-.line-pt img {
+.line-pt img,
+.line-pt-buana img {
   margin-top: -50px;
   width: 250px;
-  height: 80px;
+  height: 150px;
 }
 
 .filled-by table.filled-table thead {
