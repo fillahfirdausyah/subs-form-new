@@ -233,7 +233,7 @@ function Template(props) {
               </div>
 
               {/* Tanda Tangan */}
-              <Signs data={x.client} />
+              <Signs data={x.client} filledBy={x.filledBy} />
 
               {/* Diisi Oleh */}
               <FilledBy data={x.filledBy} uid={x.uid} id={props.id} />
