@@ -236,7 +236,7 @@ function Template(props) {
               <Signs data={x.client} />
 
               {/* Diisi Oleh */}
-              <FilledBy data={x.filledBy}/>
+              <FilledBy data={x.filledBy} uid={x.uid} id={props.id} />
             </div>
           </Content>
         ))}
