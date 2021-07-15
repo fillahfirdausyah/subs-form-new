@@ -30,13 +30,15 @@ function FilledBy({ data, uid, id }) {
     let ref = database.ref(`data/${uid}/${id}`);
     ref.on("value", (snap) => {
       let theData = snap.val();
-      radioData.forEach((x) => {
-        if (Object.keys(theData.documentReq) == x.val) {
-          x.checked = true;
-        } else {
-          x.disabled = "disabled";
-        }
-      });
+      if (theData.filledBy !== undefined) {
+        radioData.forEach((x) => {
+          if (Object.keys(theData.documentReq) == x.val) {
+            x.checked = true;
+          } else {
+            x.disabled = "disabled";
+          }
+        });
+      }
       setXkl(radioData);
     });
   }, []);
