@@ -33,6 +33,7 @@ export function RadioTemplate(props) {
         value={props.value}
         onChange={props.onChange}
         checked={props.checked && true}
+        disabled={props.disabled && true}
       />
       <label class="form-check-label template" for={props.id}>
         {props.label}

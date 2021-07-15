@@ -33,6 +33,8 @@ function FilledBy({ data, uid, id }) {
       radioData.forEach((x) => {
         if (Object.keys(theData.documentReq) == x.val) {
           x.checked = true;
+        } else {
+          x.disabled = "disabled";
         }
       });
       setXkl(radioData);
@@ -79,6 +81,7 @@ function FilledBy({ data, uid, id }) {
                       label={x.label}
                       value={x.val}
                       checked={x.checked && true}
+                      disabled={x.disabled}
                     />
                   </div>
                 </div>
