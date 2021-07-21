@@ -106,9 +106,6 @@ function Dashboard() {
                         <a href="" className="btn mx-2 btn-danger">
                           <DeleteIcon />
                         </a>
-                        <button className="btn btn-primary">
-                          <PictureAsPdfIcon />
-                        </button>
                       </div>
                     </div>
                   </div>
