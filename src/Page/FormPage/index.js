@@ -14,7 +14,7 @@ function FormPage() {
     try {
       await database.ref("data/" + currentUser.uid).push(data);
       let storageRef = storage.ref();
-      const fileRef = storageRef.child(`images/${data.client.ttd.name}`);
+      const fileRef = storageRef.child(`images/${data.client.imgName}`);
       await fileRef.put(data.client.ttd);
       history.push("/dashboard");
     } catch (err) {

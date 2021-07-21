@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { database } from "../../firebase";
-import { useAuth } from "../../Context/AuthContext";
 
 // Component
 import Template from "../../Component/Template";
+import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
 
 function PreviewPage() {
   const [data, setData] = useState([]);
@@ -20,6 +20,9 @@ function PreviewPage() {
   return (
     <div>
       <Template data={data} id={id} />
+      <button onClick={() => window.print()} className="btn-proses">
+        <PictureAsPdfIcon />
+      </button>
     </div>
   );
 }

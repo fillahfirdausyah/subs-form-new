@@ -9,6 +9,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
 
 // Context
 import { useAuth } from "../../../Context/AuthContext";
@@ -98,13 +99,16 @@ function Dashboard() {
                         </Link>
                         <Link
                           to={`lengkapi/${x.uid}/${x.id}`}
-                          className="btn mx-2 btn-success"
+                          className="btn mx-1 btn-success"
                         >
                           <EditIcon />
                         </Link>
-                        <a href="" className="btn btn-danger">
+                        <a href="" className="btn mx-2 btn-danger">
                           <DeleteIcon />
                         </a>
+                        <button className="btn btn-primary">
+                          <PictureAsPdfIcon />
+                        </button>
                       </div>
                     </div>
                   </div>
