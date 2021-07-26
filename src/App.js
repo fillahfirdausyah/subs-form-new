@@ -19,7 +19,7 @@ function App() {
       <AuthProvider>
         <Switch>
           <Route path="/" exact>
-            <h1>Hallo Selamat Datang</h1>
+            <Redirect to="/login" />
           </Route>
           <Route path="/login" exact>
             <LoginPage />
