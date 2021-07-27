@@ -134,7 +134,7 @@ table textarea {
 }
 
 .new-page {
-  margin-top: 350px;
+  margin-top: 80px;
 }
 
 .input-city {
@@ -239,5 +239,9 @@ table textarea {
     height: 99%;
     page-break-after: avoid;
     page-break-before: avoid;
+  }
+
+  .new-page {
+    margin-top: 350px !important;
   }
 }
