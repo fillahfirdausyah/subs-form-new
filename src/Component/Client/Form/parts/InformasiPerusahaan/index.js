@@ -156,7 +156,6 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 Alamat Situs
               </label>
               <input
-                required
                 onChange={changeHandler}
                 type="text"
                 class="form-control"
@@ -164,6 +163,7 @@ function InformasiPerusahaan({ getInfoPerushaan }) {
                 value={data.alamatSitus}
                 name="alamatSitus"
               />
+              <div class="form-text">*{")"} Opsional</div>
             </div>
             <div class="mb-3">
               <label for="jenis-usaha" class="form-label">
