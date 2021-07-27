@@ -10,12 +10,13 @@ function Signs({ data, filledBy }) {
     ref.getDownloadURL().then((url) => {
       setImage(url);
     });
-    let ref2 = storage.ref(`images/${filledBy.imgName}`);
-    ref2.getDownloadURL().then((url) => {
-      setBuana(url);
-    });
+    if (filledBy !== undefined) {
+      let ref2 = storage.ref(`images/${filledBy.imgName}`);
+      ref2.getDownloadURL().then((url) => {
+        setBuana(url);
+      });
+    }
   }, []);
-
   return (
     <div className="sign">
       <div className="pt-buana">
