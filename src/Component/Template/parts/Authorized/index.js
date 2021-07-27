@@ -124,6 +124,15 @@ function Authorized({ data, uid, id }) {
           </tr>
           <tr>
             <td>
+              <p>No. Kartu Identitas /</p>{" "}
+              <p className="font-italic">ID Card Number</p>
+            </td>
+            <td>
+              <input type="text" disabled value={data.noKartuId} />
+            </td>
+          </tr>
+          <tr>
+            <td>
               <p>Masa Berlaku /</p> <p className="font-italic">Valid Until</p>
             </td>
             <td>
