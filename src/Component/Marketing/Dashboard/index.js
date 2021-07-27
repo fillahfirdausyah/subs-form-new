@@ -26,7 +26,6 @@ function Dashboard() {
     ref.on("value", (res) => {
       const newData = [];
       const newObj = [];
-      const snap = res.val();
       res.forEach((x, i) => {
         let node = x.val();
         newObj.push(node);
