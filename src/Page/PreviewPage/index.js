@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { database } from "../../firebase";
 
@@ -8,16 +8,19 @@ import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
 
 function PreviewPage() {
   const [data, setData] = useState([]);
+  const [fpb, setFpb] = useState("");
   const { uid, id } = useParams();
 
   useEffect(() => {
     let ref = database.ref(`/data/${uid}/${id}`);
     ref.on("value", (snap) => {
-      setData([snap.val()]);
       let data = snap.val();
-      document.title = data.information.fpb;
+      setData([data]);
+      setFpb(data.information.fpb);
     });
   }, []);
+
+  useTitle(fpb);
 
   return (
     <div>
@@ -27,6 +30,16 @@ function PreviewPage() {
       </button>
     </div>
   );
+}
+
+function useTitle(title) {
+  useEffect(() => {
+    const prevTitle = document.title;
+    document.title = title;
+    return () => {
+      document.title = prevTitle;
+    };
+  });
 }
 
 export default PreviewPage;
