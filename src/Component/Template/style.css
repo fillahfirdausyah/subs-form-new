@@ -1,6 +1,9 @@
 .pdf {
   color: black !important;
   font-family: Arial, Helvetica, sans-serif;
+  width: 9.0in;
+  background-color: white;
+  margin: 0 auto;
 }
 
 input:focus {
@@ -55,8 +58,9 @@ section .section1 {
 }
 
 .content {
-  margin-top: 0px;
+  margin-top: 0;
   padding: 0 15px;
+  margin-bottom: 0;
 }
 
 .content span.font-bold {
@@ -130,7 +134,7 @@ table textarea {
 }
 
 .new-page {
-  margin-top: 210px;
+  margin-top: 320px;
 }
 
 .input-city {
@@ -210,18 +214,24 @@ table textarea {
 } */
 
 /* 612px x 792px is our default size of a PDF */
-.pdf {
-  /* width: 612px; */
-  /* height: 792px; */
-  /* width: 20cm; */
-  width: 8.27in;
-  /* height: 1169in; */
-  background-color: white;
-  margin: 0 auto;
-}
+/* .pdf {
+  width: 612px;
+  height: 792px;
+  width: 20cm;
+  height: 4680px;
+  margin-bottom: 0;
+} */
 
 @media print {
   .btn-proses {
     display: none;
+  }
+
+  html,
+  body {
+    border: 1px solid white;
+    height: 99%;
+    page-break-after: avoid;
+    page-break-before: avoid;
   }
 }
