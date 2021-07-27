@@ -25,11 +25,9 @@ function SubscriptionFee({ data }) {
               )}
             </td>
           </tr>
-          <br />
-          <br />
           <tr>
             <td>
-              <p>Biaya Layanan /</p>{" "}
+              <p style={{marginTop: '30px'}}>Biaya Layanan /</p>{" "}
               <p className="font-italic">Cost of Services</p>
               <br />
               <span>(Monthly Charge)</span>

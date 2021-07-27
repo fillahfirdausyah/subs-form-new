@@ -1,6 +1,6 @@
 import React from "react";
 
-function BillingAddress({data}) {
+function BillingAddress({ data }) {
   return (
     <div className="billing-address">
       <table>
@@ -21,6 +21,7 @@ function BillingAddress({data}) {
                 value={data.alamat}
               ></textarea>
             </td>
+            <td></td>
           </tr>
         </tbody>
       </table>

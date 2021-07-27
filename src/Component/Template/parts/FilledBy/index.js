@@ -53,43 +53,49 @@ function FilledBy({ data, uid, id }) {
               <span className="font-italic">/ Filled by Buanalintas</span>
             </th>
           </thead>
-          <tbody>
-            <table style={{ width: "300px" }}>
-              <tr>
-                <td>Marketing</td>
-                {data == undefined ? <td>: </td> : <td> : {data.nama}</td>}
-              </tr>
-              <tr>
-                <td>Tanggal / Date</td>
-                {data == undefined ? <td>: </td> : <td>: {data.tanggal}</td>}
-              </tr>
-            </table>
-          </tbody>
-          <div className="dokumen">
-            <span className="font-bold">
-              Kelengkapan dokumen pelanggan baru
-            </span>{" "}
-            <span className="font-italic">
-              / Documents Requirements for New Customer
-            </span>
-            <div className="input-document">
-              {xkl.map((x) => (
-                <div className="row">
-                  <div className="col">
-                    <RadioTemplate
-                      name={x.name}
-                      key={x.id}
-                      id={x.id}
-                      label={x.label}
-                      value={x.val}
-                      checked={x.checked && true}
-                      disabled={x.disabled}
-                    />
+          <tr>
+            <tbody>
+              <table style={{ width: "300px" }}>
+                <tr>
+                  <td>Marketing</td>
+                  {data == undefined ? <td>: </td> : <td> : {data.nama}</td>}
+                </tr>
+                <tr>
+                  <td>Tanggal / Date</td>
+                  {data == undefined ? <td>: </td> : <td>: {data.tanggal}</td>}
+                </tr>
+              </table>
+            </tbody>
+            <td></td>
+          </tr>
+          <tr>
+            <div className="dokumen">
+              <span className="font-bold">
+                Kelengkapan dokumen pelanggan baru
+              </span>{" "}
+              <span className="font-italic">
+                / Documents Requirements for New Customer
+              </span>
+              <div className="input-document">
+                {xkl.map((x) => (
+                  <div className="row">
+                    <div className="col">
+                      <RadioTemplate
+                        name={x.name}
+                        key={x.id}
+                        id={x.id}
+                        label={x.label}
+                        value={x.val}
+                        checked={x.checked && true}
+                        disabled={x.disabled}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+            <td></td>
+          </tr>
         </table>
       </div>
     </>

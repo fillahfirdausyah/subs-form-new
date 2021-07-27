@@ -215,6 +215,7 @@ function Template(props) {
                           Buanalintas yang dimaksudkan ini tanpa kecuali.
                         </p>
                       </td>
+                      <td></td>
                     </tr>
                     <tr>
                       <td>
@@ -229,6 +230,7 @@ function Template(props) {
                           Services Terms and Conditions without exception.
                         </p>
                       </td>
+                      <td></td>
                     </tr>
                   </tbody>
                 </table>

@@ -20,6 +20,7 @@ function InstallationAddress({ data }) {
                 style={{ width: "90%", height: "90px" }}
               ></textarea>
             </td>
+            <td></td>
           </tr>
         </tbody>
       </table>

@@ -1,7 +1,7 @@
 .pdf {
   color: black !important;
   font-family: Arial, Helvetica, sans-serif;
-  width: 9.0in;
+  width: 9in;
   background-color: white;
   margin: 0 auto;
 }
@@ -101,7 +101,7 @@ section .section1 {
 
 table {
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid black !important;
 }
 
 table thead {
@@ -134,7 +134,7 @@ table textarea {
 }
 
 .new-page {
-  margin-top: 320px;
+  margin-top: 350px;
 }
 
 .input-city {
@@ -171,6 +171,7 @@ table textarea {
   display: grid;
   grid-template-columns: auto auto;
   /* grid-column: auto auto; */
+  margin-top: 50px;
 }
 
 .sign input {
@@ -200,6 +201,7 @@ table textarea {
 
 .filled-by {
   padding-bottom: 50px;
+  margin-top: 84px;
 }
 
 .dokumen {
@@ -221,6 +223,10 @@ table textarea {
   height: 4680px;
   margin-bottom: 0;
 } */
+
+.fpb-info table {
+  border: none !important;
+}
 
 @media print {
   .btn-proses {
