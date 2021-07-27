@@ -20,7 +20,6 @@ function FormPage() {
     } catch (err) {
       console.log(err);
     }
-    // console.log(data.client.ttd);
   };
 
   return <Form postData={postHandler} />;

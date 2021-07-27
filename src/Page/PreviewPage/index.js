@@ -14,6 +14,8 @@ function PreviewPage() {
     let ref = database.ref(`/data/${uid}/${id}`);
     ref.on("value", (snap) => {
       setData([snap.val()]);
+      let data = snap.val();
+      document.title = data.information.fpb;
     });
   }, []);
 

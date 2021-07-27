@@ -96,7 +96,6 @@ function Form(props) {
     };
 
     props.postData(data);
-
   };
 
   return (
