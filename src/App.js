@@ -12,6 +12,7 @@ import MarketingPage from "./Page/MarketingPage";
 import PreviewPage from "./Page/PreviewPage";
 import EditPage from "./Page/EditPage";
 import LengkapiPage from "./Page/LengkapiPage";
+import LengkapiEditPage from "./Page/LengkapiEditPage";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/lengkapi/:uid/:id" exact>
             <LengkapiPage />
+          </Route>
+          <Route path="/lengkapi/edit/:uid/:id" exact>
+            <LengkapiEditPage />
           </Route>
           <Route path="/edit/:id" exact>
             <EditPage />
