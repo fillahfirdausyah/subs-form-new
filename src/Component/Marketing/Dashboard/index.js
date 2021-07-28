@@ -96,12 +96,21 @@ function Dashboard() {
                         >
                           <VisibilityIcon />
                         </Link>
-                        <Link
-                          to={`lengkapi/${x.uid}/${x.id}`}
-                          className="btn mx-1 btn-success"
-                        >
-                          <EditIcon />
-                        </Link>
+                        {x.filledBy ? (
+                          <Link
+                            to={`lengkapi/edit/${x.uid}/${x.id}`}
+                            className="btn mx-1 btn-success"
+                          >
+                            <EditIcon />
+                          </Link>
+                        ) : (
+                          <Link
+                            to={`lengkapi/${x.uid}/${x.id}`}
+                            className="btn mx-1 btn-success"
+                          >
+                            <EditIcon />
+                          </Link>
+                        )}
                         <a href="" className="btn mx-2 btn-danger">
                           <DeleteIcon />
                         </a>
