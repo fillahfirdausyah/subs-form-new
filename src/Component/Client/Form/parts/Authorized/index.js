@@ -10,6 +10,7 @@ import FormWrapper from "../FormWrapper";
 
 function Authorized({ getAuthorized }) {
   const [open, setOpen] = useState(false);
+  const [isTanggal, setIsTanggal] = useState(false);
   const [data, setData] = useState({
     nama: "",
     ttlTempat: "",
@@ -51,12 +52,28 @@ function Authorized({ getAuthorized }) {
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
+
     const newData = {
       ...data,
       [name]: value,
     };
     setData(newData);
     getAuthorized(newData);
+  };
+
+  const selectHandler = (e) => {
+    const { name, value } = e.target;
+    if (value === "tanggal") {
+      setIsTanggal(true);
+    } else {
+      setIsTanggal(false);
+      const newData = {
+        ...data,
+        [name]: value,
+      };
+      setData(newData);
+      getAuthorized(newData);
+    }
   };
 
   return (
@@ -167,34 +184,48 @@ function Authorized({ getAuthorized }) {
               </div>
             </div>
             <div class="mb-3">
+              <label for="jenis-usaha" class="form-label">
+                No. Kartu Identitas
+              </label>
+              <input
+                required
+                type="number"
+                onChange={changeHandler}
+                class="form-control"
+                id="jenis-usaha"
+                name="noKartuId"
+                value={data.noKartuId}
+              />
+            </div>
+            <div className="mb-3">
+              <label for="jenis-usaha" class="form-label">
+                Masa Berlaku
+              </label>
               <div className="row">
-                <div className="col">
-                  <label for="jenis-usaha" class="form-label">
-                    No. Kartu Identitas
-                  </label>
-                  <input
-                    required
-                    type="number"
-                    onChange={changeHandler}
-                    class="form-control"
-                    id="jenis-usaha"
-                    name="noKartuId"
-                    value={data.noKartuId}
-                  />
-                </div>
-                <div className="col">
-                  <label for="jenis-usaha" class="form-label">
-                    Masa Berlaku
-                  </label>
-                  <input
-                    required
-                    type="date"
-                    onChange={changeHandler}
-                    class="form-control"
-                    id="jenis-usaha"
+                <div className="col-6">
+                  <select
+                    onChange={selectHandler}
+                    className="form-select"
                     name="masaBerlaku"
-                    value={data.masaBerlaku}
-                  />
+                    id=""
+                  >
+                    <option value="">Pilih</option>
+                    <option value="Seumur Hidup">Seumur Hidup</option>
+                    <option value="tanggal">Tanggal</option>
+                  </select>
+                </div>
+                <div className="col-6">
+                  {isTanggal ? (
+                    <input
+                      required
+                      type="date"
+                      onChange={changeHandler}
+                      class="form-control"
+                      id="jenis-usaha"
+                      name="masaBerlaku"
+                      value={data.masaBerlaku}
+                    />
+                  ) : null}
                 </div>
               </div>
             </div>
