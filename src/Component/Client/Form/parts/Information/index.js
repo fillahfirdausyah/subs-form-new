@@ -76,7 +76,7 @@ function Information({ getInformation }) {
     };
 
     getInformation(newData);
-  }, []);
+  }, [no]);
 
   return (
     <>

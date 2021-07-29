@@ -25,8 +25,6 @@ function AuthorizedFinance({ getAuthorizedFinance }) {
       [name]: value,
     };
     setaData(newData);
-    console.log(newData);
-
     getAuthorizedFinance(newData);
   };
 
