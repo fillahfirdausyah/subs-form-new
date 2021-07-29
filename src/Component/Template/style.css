@@ -229,6 +229,10 @@ table textarea {
 }
 
 @media print {
+  body {
+    background-color: white !important;
+  }
+
   .btn-proses {
     display: none;
   }
