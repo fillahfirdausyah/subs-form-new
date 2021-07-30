@@ -4,22 +4,19 @@ import { database } from "../../../../firebase";
 
 const radioData = [
   {
-    name: "document",
     id: "type1",
     label: "Fotokopi KTP / Paspor / Copy of ID / Passport",
-    val: "Fotokpoi KTP Paspor",
+    name: "Fotokpoi KTP Paspor",
   },
   {
-    name: "document",
     id: "type2",
     label: "Fotokopi NPWP / Copy of Tax Registered Number",
-    val: "Fotokopi NPWP",
+    name: "Fotokopi NPWP",
   },
   {
-    name: "document",
     id: "type2",
     label: "Surat Kuasa (apabila dikuasakan)",
-    val: "Surat Kuasa",
+    name: "Surat Kuasa",
   },
 ];
 
@@ -32,10 +29,11 @@ function FilledBy({ data, uid, id }) {
       let theData = snap.val();
       if (theData.filledBy !== undefined) {
         radioData.forEach((x) => {
-          if (Object.keys(theData.documentReq) == x.val) {
-            x.checked = true;
-          } else {
-            x.disabled = "disabled";
+          let key = Object.keys(theData.documentReq);
+          for (let i in key) {
+            if (key[i] === x.name) {
+              x.checked = true;
+            }
           }
         });
       }
