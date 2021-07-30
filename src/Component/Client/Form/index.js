@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import DoneIcon from "@material-ui/icons/Done";
-import { database } from "../../../firebase";
 import { useAuth } from "../../../Context/AuthContext";
 
 // Asset
 import "./style.css";
+import { Spinner } from "react-bootstrap";
 
 // Component
 import Information from "./parts/Information";
@@ -31,6 +31,7 @@ function Form(props) {
   const [serviceOrder, setServiceOrder] = useState({});
   const [installationAddress, setInstallationAddress] = useState({});
   const [client, setClient] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   // Callback Function
   const getInformation = (data) => {
@@ -80,6 +81,7 @@ function Form(props) {
 
   const prosesHandler = (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const data = {
       information,
@@ -137,9 +139,15 @@ function Form(props) {
             {/* Tanda Tangan */}
             <Signs getPtClient={getPtClient} />
 
-            <button type="submit" className="btn-proses">
-              <DoneIcon />
-            </button>
+            {isLoading ? (
+              <button type="submit" className="btn-proses">
+                <Spinner animation="border" />
+              </button>
+            ) : (
+              <button type="submit" className="btn-proses">
+                <DoneIcon />
+              </button>
+            )}
           </form>
         </div>
       </div>
