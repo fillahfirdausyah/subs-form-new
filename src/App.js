@@ -25,9 +25,6 @@ function App() {
           <Route path="/login" exact>
             <LoginPage />
           </Route>
-          <Route path="/form" exact>
-            <FormPage />
-          </Route>
           <Route path="/preview/:uid/:id" exact>
             <PreviewPage />
           </Route>
@@ -42,6 +39,7 @@ function App() {
           </Route>
           <ProtectedRoute path="/dashboard" component={HomePage} />
           <ProtectedRoute path="/marketing" component={MarketingPage} />
+          <ProtectedRoute path="/form" component={FormPage} />
         </Switch>
       </AuthProvider>
     </div>
