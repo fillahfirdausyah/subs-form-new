@@ -1,39 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Icon
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
 // Component
-import Radio from "../../../../Radio";
+import { Checkbox } from "../../../../Radio";
 
 function DocumentReq({ getDocumentReq }) {
   const [open, setOpen] = useState(false);
+  const [data, setData] = useState({});
 
   const xkl = [
     {
-      name: "document",
       id: "type1",
       label: "Fotokopi KTP / Paspor / Copy of ID / Passport",
-      val: "Fotokpoi KTP Paspor",
+      name: "Fotokpoi KTP Paspor",
     },
     {
-      name: "document",
       id: "type2",
       label: "Fotokopi NPWP / Copy of Tax Registered Number",
-      val: "Fotokopi NPWP",
+      name: "Fotokopi NPWP",
     },
     {
-      name: "document",
       id: "type2",
       label: "Surat Kuasa (apabila dikuasakan)",
-      val: "Surat Kuasa",
+      name: "Surat Kuasa",
     },
   ];
 
-  const radioHandler = (e) => {
-    const { value, checked } = e.target;
-    getDocumentReq({ [value]: checked });
+  useEffect(() => {
+    getDocumentReq(data);
+  }, [data]);
+
+  const handleChange = (e) => {
+    const { name, checked } = e.target;
+
+    const newData = {
+      ...data,
+      [name]: checked,
+    };
+    setData(newData);
   };
 
   return (
@@ -56,13 +63,12 @@ function DocumentReq({ getDocumentReq }) {
               <td>Dokumen</td>
               <td>
                 {xkl.map((x) => (
-                  <Radio
+                  <Checkbox
                     name={x.name}
-                    key={x.id}
                     id={x.id}
                     label={x.label}
-                    value={x.val}
-                    onChange={radioHandler}
+                    checked={data[x.name]}
+                    onChange={handleChange}
                   />
                 ))}
               </td>

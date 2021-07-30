@@ -33,7 +33,6 @@ function Form({ updateData }) {
     };
 
     updateData(newData);
-    // console.log(newData);
   };
 
   return (

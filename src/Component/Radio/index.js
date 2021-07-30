@@ -22,6 +22,27 @@ function Radio(props) {
   );
 }
 
+export function Checkbox(props) {
+  return (
+    <>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name={props.name}
+          id={props.id}
+          value={props.value}
+          onChange={props.onChange}
+          checked={props.checked && true}
+        />
+        <label class="form-check-label" for={props.id}>
+          {props.label}
+        </label>
+      </div>
+    </>
+  );
+}
+
 export function RadioTemplate(props) {
   return (
     <>
