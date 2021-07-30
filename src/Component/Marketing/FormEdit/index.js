@@ -6,7 +6,7 @@ import SubscriptionFee from "./parts/SubscriptionFee";
 import Filledby from "./parts/FilledBy";
 import DocumentReq from "./parts/DocumentReq";
 
-function FormEdit({ uid, id }) {
+function FormEdit({ updateData, uid, id }) {
   const [subscriptionFee, setSubscriptionFee] = useState({});
   const [filledBy, setFilledBy] = useState({});
   const [documentReq, setDocumentReq] = useState({});
@@ -32,8 +32,7 @@ function FormEdit({ uid, id }) {
       documentReq,
     };
 
-    // updateData(newData);
-    console.log(newData);
+    updateData(newData);
   };
 
   return (
